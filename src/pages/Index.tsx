@@ -487,7 +487,7 @@ export default function Index() {
                       <Icon name="Mail" size={24} className="text-primary" />
                     </div>
                     <div>
-                      <h3 className="font-bold mb-1">Email</h3>
+                      <h3 className="font-bold mb-1">telegram channel</h3>
                       <p className="text-muted-foreground">ska1946@vfhl.com</p>
                     </div>
                   </div>
