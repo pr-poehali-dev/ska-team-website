@@ -295,10 +295,165 @@ export default function Index() {
                 <Icon name="Calendar" size={32} className="text-primary" />
                 <span className="text-gradient">Календарь матчей</span>
               </h2>
-              <Card className="p-8 bg-card/80 backdrop-blur-sm border-border/50">
-                <div className="text-center py-12">
-                  <Icon name="CalendarDays" size={64} className="text-muted-foreground mx-auto mb-4" />
-                  <p className="text-xl text-muted-foreground">Расписание матчей скоро появится</p>
+              <Card className="p-6 bg-card/80 backdrop-blur-sm border-border/50">
+                <div className="grid grid-cols-7 gap-2">
+                  {['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'].map((day) => (
+                    <div key={day} className="text-center font-bold py-2 text-muted-foreground">
+                      {day}
+                    </div>
+                  ))}
+                  
+                  <div className="p-2 text-center">22</div>
+                  <div className="p-2 text-center">23</div>
+                  <div className="p-2 text-center">24</div>
+                  <div className="p-2 bg-primary/10 rounded-lg border border-primary/30">
+                    <div className="text-center font-semibold mb-2">25</div>
+                    <div className="flex flex-col gap-1 text-xs">
+                      <div className="flex items-center justify-between gap-1">
+                        <span className="text-[10px]">🏒 СКА</span>
+                        <span className="font-bold">17:30</span>
+                        <span className="text-[10px]">Белые медведи</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="p-2 bg-primary/10 rounded-lg border border-primary/30">
+                    <div className="text-center font-semibold mb-2">26</div>
+                    <div className="flex flex-col gap-1 text-xs">
+                      <div className="flex items-center justify-between gap-1">
+                        <span className="text-[10px]">🏒 СКА</span>
+                        <span className="font-bold">17:30</span>
+                        <span className="text-[10px]">Красная армия</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="p-2 bg-primary/10 rounded-lg border border-primary/30">
+                    <div className="text-center font-semibold mb-2">27</div>
+                    <div className="flex flex-col gap-1 text-xs">
+                      <div className="flex items-center justify-between gap-1">
+                        <span className="text-[10px]">🏒 СКА</span>
+                        <span className="font-bold">17:30</span>
+                        <span className="text-[10px]">Сибирские снайперы</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="p-2 text-center">28</div>
+
+                  <div className="p-2 text-center">29</div>
+                  <div className="p-2 bg-primary/10 rounded-lg border border-primary/30">
+                    <div className="text-center font-semibold mb-2">30</div>
+                    <div className="flex flex-col gap-1 text-xs">
+                      <div className="flex items-center justify-between gap-1">
+                        <span className="text-[10px]">Омские ястребы</span>
+                        <span className="font-bold">16:30</span>
+                        <span className="text-[10px]">🏒 СКА</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="p-2 bg-primary/10 rounded-lg border border-primary/30">
+                    <div className="text-center font-semibold mb-2">31</div>
+                    <div className="flex flex-col gap-1 text-xs">
+                      <div className="flex items-center justify-between gap-1">
+                        <span className="text-[10px]">Толпар</span>
+                        <span className="font-bold">16:30</span>
+                        <span className="text-[10px]">🏒 СКА</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="p-2 bg-primary/10 rounded-lg border border-primary/30">
+                    <div className="text-center font-semibold mb-2">1</div>
+                    <div className="flex flex-col gap-1 text-xs">
+                      <div className="flex items-center justify-between gap-1">
+                        <span className="text-[10px]">Академия Михайлова</span>
+                        <span className="font-bold">16:30</span>
+                        <span className="text-[10px]">🏒 СКА</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="p-2 text-center">2</div>
+                  <div className="p-2 text-center">3</div>
+                  <div className="p-2 text-center">4</div>
+
+                  <div className="p-2 text-center">5</div>
+                  <div className="p-2 text-center">6</div>
+                  <div className="p-2 text-center">7</div>
+                  <div className="p-2 bg-primary/10 rounded-lg border border-primary/30">
+                    <div className="text-center font-semibold mb-2">8</div>
+                    <div className="flex flex-col gap-1 text-xs">
+                      <div className="flex items-center justify-between gap-1">
+                        <span className="text-[10px]">🏒 СКА</span>
+                        <span className="font-bold">18:30</span>
+                        <span className="text-[10px]">Стальные лисы</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="p-2 text-center">9</div>
+                  <div className="p-2 text-center">10</div>
+                  <div className="p-2 text-center">11</div>
+
+                  <div className="p-2 text-center">12</div>
+                  <div className="p-2 text-center">13</div>
+                  <div className="p-2 text-center">14</div>
+                  <div className="p-2 bg-primary/10 rounded-lg border border-primary/30">
+                    <div className="text-center font-semibold mb-2">15</div>
+                    <div className="flex flex-col gap-1 text-xs">
+                      <div className="flex items-center justify-between gap-1">
+                        <span className="text-[10px]">🏒 СКА</span>
+                        <span className="font-bold">16:30</span>
+                        <span className="text-[10px]">Локо</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="p-2 text-center">16</div>
+                  <div className="p-2 text-center">17</div>
+                  <div className="p-2 bg-primary/10 rounded-lg border border-primary/30">
+                    <div className="text-center font-semibold mb-2">18</div>
+                    <div className="flex flex-col gap-1 text-xs">
+                      <div className="flex items-center justify-between gap-1">
+                        <span className="text-[10px]">Шинник</span>
+                        <span className="font-bold">18:30</span>
+                        <span className="text-[10px]">🏒 СКА</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="p-2 text-center">19</div>
+                  <div className="p-2 text-center">20</div>
+                  <div className="p-2 text-center">21</div>
+                  <div className="p-2 bg-primary/10 rounded-lg border border-primary/30">
+                    <div className="text-center font-semibold mb-2">22</div>
+                    <div className="flex flex-col gap-1 text-xs">
+                      <div className="flex items-center justify-between gap-1">
+                        <span className="text-[10px]">🏒 СКА</span>
+                        <span className="font-bold">17:30</span>
+                        <span className="text-[10px]">Кузнецкие медведи</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="p-2 text-center">23</div>
+                  <div className="p-2 bg-primary/10 rounded-lg border border-primary/30">
+                    <div className="text-center font-semibold mb-2">24</div>
+                    <div className="flex flex-col gap-1 text-xs">
+                      <div className="flex items-center justify-between gap-1">
+                        <span className="text-[10px]">Алмаз</span>
+                        <span className="font-bold">16:30</span>
+                        <span className="text-[10px]">🏒 СКА</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="p-2 text-center">25</div>
+
+                  <div className="p-2 text-center">26</div>
+                  <div className="p-2 text-center">27</div>
+                  <div className="p-2 text-center">28</div>
+                  <div className="p-2 text-center">29</div>
+                  <div className="p-2 text-center">30</div>
+                  <div className="p-2 text-center">31</div>
+                  <div className="p-2 text-center">1</div>
+                  <div className="p-2 text-center">2</div>
+                </div>
+                <div className="mt-4 flex items-center gap-2 text-sm text-muted-foreground">
+                  <div className="w-4 h-4 bg-primary/10 border border-primary/30 rounded"></div>
+                  <span>Матчи СКА 🏒</span>
                 </div>
               </Card>
             </div>
