@@ -172,11 +172,11 @@ export default function Index() {
                 {teamRoster.map((player) => (
                   <Card key={player.number} className="p-4">
                     <div className="flex items-start justify-between mb-3">
-                      <div className="w-12 h-12 rounded-full overflow-hidden border border-border">
+                      <div className="w-12 h-12 rounded-full overflow-hidden border border-border bg-primary/10 flex items-center justify-center">
                         <img 
-                          src="https://cdn.poehali.dev/files/8bb9cdc1-0225-436c-9095-69e5155d7dbc.png" 
+                          src="https://tickets-hockey.ru/wp-content/uploads/ubs/team/872/ska-1946-mhl.svg" 
                           alt={player.name}
-                          className="w-full h-full object-cover"
+                          className="w-8 h-8 object-contain"
                         />
                       </div>
                       <Badge variant="outline" className="text-xs">
