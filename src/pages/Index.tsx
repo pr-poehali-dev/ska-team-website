@@ -495,12 +495,12 @@ export default function Index() {
                     <div>
                       <h3 className="font-bold mb-1">Telegram</h3>
                       <a 
-                        href="https://t.me/W6xxysick_blk" 
+                        href="https://t.me/SKA1946VFHL" 
                         target="_blank" 
                         rel="noopener noreferrer"
                         className="text-muted-foreground hover:text-primary transition-colors underline"
                       >
-                        @W6xxysick_blk
+                        @SKA1946VFHL
                       </a>
                     </div>
                   </div>
