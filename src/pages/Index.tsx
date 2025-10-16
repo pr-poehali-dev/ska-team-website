@@ -30,9 +30,11 @@ export default function Index() {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center font-bold text-xl card-glow">
-                  SKA
-                </div>
+                <img 
+                  src="https://avatars.mds.yandex.net/i?id=3976efaf5861705854b412324ef3dfc6a54b2768-5507593-images-thumbs&n=13" 
+                  alt="SKA Logo" 
+                  className="w-12 h-12 object-contain"
+                />
                 <div>
                   <h1 className="text-2xl font-bold text-gradient">SKA 1946</h1>
                   <p className="text-xs text-muted-foreground">VFHL | PUCK LEAGUE</p>
