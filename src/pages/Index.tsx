@@ -138,22 +138,28 @@ export default function Index() {
 
       <main className="pt-[145px] pb-12">
         <div className="container mx-auto px-4">
-          <div className="relative mb-12 rounded-2xl overflow-hidden h-[400px] bg-gradient-to-br from-primary/20 via-secondary to-accent/20 border border-primary/30 animate-fade-in card-glow">
-            <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAwIDAgTCAyMCAwIEwgMjAgMjAgTCAwIDIwIFoiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjAzKSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-30"></div>
+          <div className="relative mb-12 rounded-2xl overflow-hidden h-[500px] bg-gradient-to-br from-primary/30 via-secondary to-accent/30 border-2 border-primary/40 animate-fade-in shadow-2xl shadow-primary/20">
+            <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAwIDAgTCAyMCAwIEwgMjAgMjAgTCAwIDIwIFoiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-40"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-accent/10"></div>
             <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6">
-              <div className="mb-6 animate-glow-pulse">
-                <Icon name="Sparkles" size={48} className="text-accent mb-4" />
+              <div className="mb-8 relative">
+                <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full"></div>
+                <img 
+                  src="https://avatars.mds.yandex.net/i?id=3976efaf5861705854b412324ef3dfc6a54b2768-5507593-images-thumbs&n=13" 
+                  alt="SKA Logo" 
+                  className="relative w-32 h-32 object-contain animate-glow-pulse drop-shadow-2xl"
+                />
               </div>
-              <h2 className="text-6xl font-bold mb-4 glow">SKA 1946</h2>
-              <p className="text-xl text-muted-foreground mb-6">VFHL | PUCK League Season 2025</p>
+              <h2 className="text-7xl font-bold mb-4 glow bg-gradient-to-r from-primary via-white to-accent bg-clip-text text-transparent">SKA 1946</h2>
+              <p className="text-2xl text-foreground/90 mb-8 font-medium">VFHL | PUCK League Season 2025</p>
               <div className="flex gap-8 text-center">
-                <div className="bg-secondary/50 backdrop-blur-sm px-6 py-3 rounded-lg border border-primary/20">
-                  <div className="text-3xl font-bold text-primary">9</div>
-                  <div className="text-sm text-muted-foreground">Position</div>
+                <div className="bg-background/60 backdrop-blur-md px-8 py-4 rounded-xl border-2 border-primary/40 shadow-lg shadow-primary/20 hover:scale-105 transition-transform">
+                  <div className="text-4xl font-bold text-primary mb-1">9</div>
+                  <div className="text-sm text-muted-foreground font-medium">Position</div>
                 </div>
-                <div className="bg-secondary/50 backdrop-blur-sm px-6 py-3 rounded-lg border border-primary/20">
-                  <div className="text-3xl font-bold text-accent">5</div>
-                  <div className="text-sm text-muted-foreground">Players</div>
+                <div className="bg-background/60 backdrop-blur-md px-8 py-4 rounded-xl border-2 border-accent/40 shadow-lg shadow-accent/20 hover:scale-105 transition-transform">
+                  <div className="text-4xl font-bold text-accent mb-1">5</div>
+                  <div className="text-sm text-muted-foreground font-medium">Players</div>
                 </div>
               </div>
             </div>
