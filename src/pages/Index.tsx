@@ -222,12 +222,15 @@ export default function Index() {
             <div className="animate-slide-up">
               <h2 className="text-4xl font-bold mb-8 flex items-center gap-3">
                 <Icon name="BarChart3" size={32} className="text-primary" />
-                <span className="text-gradient">Statistics</span>
+                <span className="text-gradient">Турнирная таблица VFHL</span>
               </h2>
-              <Card className="p-8 bg-card/80 backdrop-blur-sm border-border/50">
-                <div className="text-center py-12">
-                  <Icon name="ChartNoAxesCombined" size={64} className="text-muted-foreground mx-auto mb-4" />
-                  <p className="text-xl text-muted-foreground">Coming Soon: Team Performance Stats</p>
+              <Card className="bg-card/80 backdrop-blur-sm border-border/50 overflow-hidden">
+                <div className="w-full h-[800px]">
+                  <iframe 
+                    src="https://vfhl.pythonanywhere.com/maintablice" 
+                    className="w-full h-full border-0"
+                    title="VFHL Tournament Table"
+                  />
                 </div>
               </Card>
             </div>
