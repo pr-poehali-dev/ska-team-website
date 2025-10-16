@@ -3,13 +3,65 @@ import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog';
 
 const teamRoster = [
-  { number: 43, name: 'BAGA', position: 'GK', stats: '3775' },
-  { number: 16, name: 'KEWS1K', position: 'PD', stats: '2890' },
-  { number: 12, name: 'extazy', position: 'LD', stats: '3120' },
-  { number: 7, name: 'F', position: 'CW', stats: '2450' },
-  { number: 17, name: 'max', position: 'PW', stats: '2780' },
+  { 
+    number: 43, 
+    name: 'BAGA', 
+    position: 'GK', 
+    stats: '3775',
+    games: 42,
+    wins: 28,
+    saves: 1247,
+    bio: 'Опытный вратарь с отличной реакцией'
+  },
+  { 
+    number: 16, 
+    name: 'KEWS1K', 
+    position: 'PD', 
+    stats: '2890',
+    games: 40,
+    goals: 15,
+    assists: 32,
+    bio: 'Защитник с мощным ударом'
+  },
+  { 
+    number: 12, 
+    name: 'extazy', 
+    position: 'LD', 
+    stats: '3120',
+    games: 41,
+    goals: 12,
+    assists: 28,
+    bio: 'Надежный защитник левого фланга'
+  },
+  { 
+    number: 7, 
+    name: 'F', 
+    position: 'CW', 
+    stats: '2450',
+    games: 38,
+    goals: 35,
+    assists: 18,
+    bio: 'Центральный нападающий с отличным чутьем'
+  },
+  { 
+    number: 17, 
+    name: 'max', 
+    position: 'PW', 
+    stats: '2780',
+    games: 39,
+    goals: 28,
+    assists: 24,
+    bio: 'Быстрый форвард правого фланга'
+  },
 ];
 
 const sections = [
@@ -22,6 +74,18 @@ const sections = [
 
 export default function Index() {
   const [activeSection, setActiveSection] = useState('team');
+  const [selectedPlayer, setSelectedPlayer] = useState<typeof teamRoster[0] | null>(null);
+  const [dialogType, setDialogType] = useState<'stats' | 'profile' | null>(null);
+
+  const openDialog = (player: typeof teamRoster[0], type: 'stats' | 'profile') => {
+    setSelectedPlayer(player);
+    setDialogType(type);
+  };
+
+  const closeDialog = () => {
+    setSelectedPlayer(null);
+    setDialogType(null);
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -130,6 +194,7 @@ export default function Index() {
                           size="sm" 
                           variant="default"
                           className="flex-1 bg-primary hover:bg-primary/90 text-white"
+                          onClick={() => openDialog(player, 'stats')}
                         >
                           <Icon name="BarChart2" size={14} className="mr-1" />
                           Stats
@@ -138,6 +203,7 @@ export default function Index() {
                           size="sm" 
                           variant="outline"
                           className="flex-1 border-accent text-accent hover:bg-accent hover:text-white"
+                          onClick={() => openDialog(player, 'profile')}
                         >
                           <Icon name="User" size={14} className="mr-1" />
                           Profile
@@ -233,6 +299,101 @@ export default function Index() {
           <p>© 2025 SKA 1946 • VFHL | PUCK League</p>
         </div>
       </footer>
+
+      <Dialog open={!!selectedPlayer} onOpenChange={closeDialog}>
+        <DialogContent className="max-w-md bg-card border-border">
+          {selectedPlayer && dialogType === 'stats' && (
+            <>
+              <DialogHeader>
+                <DialogTitle className="text-2xl font-bold flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-xl font-bold">
+                    {selectedPlayer.number}
+                  </div>
+                  <span>{selectedPlayer.name}</span>
+                </DialogTitle>
+                <DialogDescription>
+                  Статистика игрока за сезон 2025
+                </DialogDescription>
+              </DialogHeader>
+              <div className="space-y-4 mt-4">
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="bg-primary/10 rounded-lg p-4 border border-primary/20">
+                    <div className="text-3xl font-bold text-primary">{selectedPlayer.games}</div>
+                    <div className="text-sm text-muted-foreground">Игр сыграно</div>
+                  </div>
+                  <div className="bg-accent/10 rounded-lg p-4 border border-accent/20">
+                    <div className="text-3xl font-bold text-accent">{selectedPlayer.stats}</div>
+                    <div className="text-sm text-muted-foreground">Рейтинг</div>
+                  </div>
+                </div>
+                {selectedPlayer.position === 'GK' ? (
+                  <div className="space-y-3">
+                    <div className="flex justify-between items-center p-3 bg-secondary/50 rounded-lg">
+                      <span className="text-muted-foreground">Побед</span>
+                      <span className="text-xl font-bold">{selectedPlayer.wins}</span>
+                    </div>
+                    <div className="flex justify-between items-center p-3 bg-secondary/50 rounded-lg">
+                      <span className="text-muted-foreground">Сейвов</span>
+                      <span className="text-xl font-bold">{selectedPlayer.saves}</span>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="space-y-3">
+                    <div className="flex justify-between items-center p-3 bg-secondary/50 rounded-lg">
+                      <span className="text-muted-foreground">Голов</span>
+                      <span className="text-xl font-bold">{selectedPlayer.goals}</span>
+                    </div>
+                    <div className="flex justify-between items-center p-3 bg-secondary/50 rounded-lg">
+                      <span className="text-muted-foreground">Передач</span>
+                      <span className="text-xl font-bold">{selectedPlayer.assists}</span>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </>
+          )}
+          {selectedPlayer && dialogType === 'profile' && (
+            <>
+              <DialogHeader>
+                <DialogTitle className="text-2xl font-bold flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-xl font-bold">
+                    {selectedPlayer.number}
+                  </div>
+                  <span>{selectedPlayer.name}</span>
+                </DialogTitle>
+                <DialogDescription>
+                  Профиль игрока команды SKA 1946
+                </DialogDescription>
+              </DialogHeader>
+              <div className="space-y-4 mt-4">
+                <div className="flex items-center justify-between p-4 bg-secondary/50 rounded-lg">
+                  <span className="text-muted-foreground">Номер</span>
+                  <Badge variant="outline" className="text-lg px-4 py-1 border-primary/30 bg-primary/10">
+                    #{selectedPlayer.number}
+                  </Badge>
+                </div>
+                <div className="flex items-center justify-between p-4 bg-secondary/50 rounded-lg">
+                  <span className="text-muted-foreground">Позиция</span>
+                  <Badge variant="outline" className="text-lg px-4 py-1 border-accent/30 bg-accent/10">
+                    {selectedPlayer.position}
+                  </Badge>
+                </div>
+                <div className="p-4 bg-secondary/50 rounded-lg">
+                  <div className="text-sm text-muted-foreground mb-2">О игроке</div>
+                  <p className="text-base">{selectedPlayer.bio}</p>
+                </div>
+                <div className="flex items-center gap-3 p-4 bg-gradient-to-r from-primary/10 to-accent/10 rounded-lg border border-primary/20">
+                  <Icon name="TrendingUp" size={24} className="text-primary" />
+                  <div>
+                    <div className="text-sm text-muted-foreground">Общий рейтинг</div>
+                    <div className="text-2xl font-bold text-gradient">{selectedPlayer.stats}</div>
+                  </div>
+                </div>
+              </div>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
