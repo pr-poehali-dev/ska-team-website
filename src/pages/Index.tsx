@@ -182,13 +182,9 @@ export default function Index() {
                           {player.position}
                         </Badge>
                       </div>
-                      <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">
+                      <h3 className="text-2xl font-bold mb-6 group-hover:text-primary transition-colors">
                         {player.name}
                       </h3>
-                      <div className="flex items-center justify-between pt-4 border-t border-border/30 mb-4">
-                        <span className="text-sm text-muted-foreground">Player Rating</span>
-                        <span className="text-lg font-bold text-accent">{player.stats}</span>
-                      </div>
                       <div className="flex gap-2">
                         <Button 
                           size="sm" 
