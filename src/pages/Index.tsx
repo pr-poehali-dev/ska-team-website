@@ -27,7 +27,7 @@ const teamRoster = [
     name: 'KEWS1K', 
     position: 'PD', 
     stats: '2890',
-    games: 40,
+    games: 4,
     goals: 15,
     assists: 32,
     bio: 'Защитник с мощным ударом'
