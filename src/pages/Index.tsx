@@ -295,20 +295,67 @@ export default function Index() {
                 <Icon name="Calendar" size={32} className="text-primary" />
                 <span className="text-gradient">Календарь матчей</span>
               </h2>
-              <Card className="bg-card/80 backdrop-blur-sm border-border/50 overflow-hidden p-4">
-                <img 
-                  src="https://cdn.poehali.dev/files/15588aca-c589-4445-9359-c2290dff97ab.png" 
-                  alt="Match Schedule Calendar" 
-                  className="w-full h-auto rounded-lg"
-                />
-              </Card>
-              <Card className="bg-card/80 backdrop-blur-sm border-border/50 overflow-hidden">
-                <div className="w-full h-[800px]">
-                  <iframe 
-                    src="https://vfhl.pythonanywhere.com/matchcalendar" 
-                    className="w-full h-full border-0"
-                    title="VFHL Match Calendar"
-                  />
+              
+              <Card className="bg-card/80 backdrop-blur-sm border-border/50 p-6">
+                <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
+                  <Icon name="Trophy" size={24} className="text-primary" />
+                  Турнирная таблица
+                </h3>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="border-b border-border/50">
+                        <th className="text-left py-3 px-2 font-semibold">Место</th>
+                        <th className="text-left py-3 px-2 font-semibold">Команда</th>
+                        <th className="text-center py-3 px-2 font-semibold">И</th>
+                        <th className="text-center py-3 px-2 font-semibold">В</th>
+                        <th className="text-center py-3 px-2 font-semibold">ВО</th>
+                        <th className="text-center py-3 px-2 font-semibold">ПО</th>
+                        <th className="text-center py-3 px-2 font-semibold">П</th>
+                        <th className="text-center py-3 px-2 font-semibold">ШЗ</th>
+                        <th className="text-center py-3 px-2 font-semibold">ШП</th>
+                        <th className="text-center py-3 px-2 font-semibold bg-primary/20">О</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {[
+                        { pos: 1, team: 'Красная Армия', i: 10, v: 8, vo: 0, po: 1, p: 1, sz: 23, sp: 9, o: 17 },
+                        { pos: 2, team: 'Тюменский Легион', i: 11, v: 6, vo: 1, po: 0, p: 3, sz: 24, sp: 11, o: 16 },
+                        { pos: 3, team: 'Сибирские снайперы', i: 12, v: 7, vo: 0, po: 0, p: 4, sz: 24, sp: 13, o: 15 },
+                        { pos: 4, team: 'Динамо-Шинник', i: 8, v: 5, vo: 1, po: 0, p: 1, sz: 21, sp: 10, o: 14 },
+                        { pos: 5, team: 'Толпар', i: 10, v: 5, vo: 0, po: 0, p: 3, sz: 26, sp: 14, o: 13 },
+                        { pos: 6, team: 'Стальные Лисы', i: 7, v: 6, vo: 0, po: 0, p: 1, sz: 14, sp: 6, o: 12 },
+                        { pos: 7, team: 'МХК Спартак', i: 5, v: 4, vo: 0, po: 0, p: 1, sz: 12, sp: 3, o: 8 },
+                        { pos: 8, team: 'Мамонты Югры', i: 5, v: 3, vo: 1, po: 0, p: 1, sz: 10, sp: 6, o: 8 },
+                        { pos: 9, team: 'Академия Михайлова', i: 7, v: 3, vo: 1, po: 0, p: 3, sz: 9, sp: 8, o: 8 },
+                        { pos: 10, team: 'Локо', i: 8, v: 3, vo: 0, po: 1, p: 4, sz: 19, sp: 24, o: 7 },
+                        { pos: 11, team: 'Омские Ястребы', i: 10, v: 3, vo: 0, po: 0, p: 7, sz: 13, sp: 18, o: 6 },
+                        { pos: 12, team: 'МХК Динамо СПб', i: 8, v: 1, vo: 0, po: 1, p: 4, sz: 10, sp: 17, o: 6 },
+                        { pos: 13, team: 'СКА 19-46', i: 7, v: 3, vo: 0, po: 0, p: 4, sz: 6, sp: 12, o: 6 },
+                        { pos: 14, team: 'Кузнецкие Медведи', i: 9, v: 2, vo: 0, po: 0, p: 7, sz: 7, sp: 20, o: 4 },
+                        { pos: 15, team: 'Чайка', i: 4, v: 1, vo: 0, po: 1, p: 2, sz: 5, sp: 9, o: 3 },
+                        { pos: 16, team: 'Белые Медведи', i: 8, v: 1, vo: 0, po: 0, p: 6, sz: 4, sp: 20, o: 3 },
+                        { pos: 17, team: 'Крылья Советов', i: 2, v: 1, vo: 0, po: 0, p: 1, sz: 2, sp: 2, o: 2 },
+                        { pos: 18, team: 'Алмаз', i: 9, v: 0, vo: 0, po: 0, p: 9, sz: 3, sp: 29, o: 0 },
+                      ].map((team, idx) => (
+                        <tr key={idx} className="border-b border-border/30 hover:bg-primary/5 transition-colors">
+                          <td className="py-3 px-2 font-semibold text-center">{team.pos}</td>
+                          <td className="py-3 px-2 font-medium">{team.team}</td>
+                          <td className="text-center py-3 px-2">{team.i}</td>
+                          <td className="text-center py-3 px-2">{team.v}</td>
+                          <td className="text-center py-3 px-2">{team.vo}</td>
+                          <td className="text-center py-3 px-2">{team.po}</td>
+                          <td className="text-center py-3 px-2">{team.p}</td>
+                          <td className="text-center py-3 px-2">{team.sz}</td>
+                          <td className="text-center py-3 px-2">{team.sp}</td>
+                          <td className="text-center py-3 px-2 font-bold bg-primary/10">{team.o}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                <div className="mt-4 text-xs text-muted-foreground">
+                  <p>И - Игры | В - Победы | ВО - Победы ОТ | ПО - Поражения ОТ | П - Поражения | ШЗ - Шайбы забитые | ШП - Шайбы пропущенные | О - Очки</p>
                 </div>
               </Card>
             </div>
