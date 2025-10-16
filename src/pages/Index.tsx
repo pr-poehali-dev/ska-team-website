@@ -382,13 +382,6 @@ export default function Index() {
                   <div className="text-sm text-muted-foreground mb-2">О игроке</div>
                   <p className="text-base">{selectedPlayer.bio}</p>
                 </div>
-                <div className="flex items-center gap-3 p-4 bg-gradient-to-r from-primary/10 to-accent/10 rounded-lg border border-primary/20">
-                  <Icon name="TrendingUp" size={24} className="text-primary" />
-                  <div>
-                    <div className="text-sm text-muted-foreground">Общий рейтинг</div>
-                    <div className="text-2xl font-bold text-gradient">{selectedPlayer.stats}</div>
-                  </div>
-                </div>
               </div>
             </>
           )}
