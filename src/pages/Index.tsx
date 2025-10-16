@@ -496,7 +496,7 @@ export default function Index() {
                       <Icon name="MessageSquare" size={24} className="text-accent" />
                     </div>
                     <div>
-                      <h3 className="font-bold mb-1">Discord</h3>
+                      <h3 className="font-bold mb-1">Telegram</h3>
                       <p className="text-muted-foreground">SKA_1946#team</p>
                     </div>
                   </div>
