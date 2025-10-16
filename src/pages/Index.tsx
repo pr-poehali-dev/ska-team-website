@@ -147,7 +147,7 @@ export default function Index() {
                 <img 
                   src="https://avatars.mds.yandex.net/i?id=3976efaf5861705854b412324ef3dfc6a54b2768-5507593-images-thumbs&n=13" 
                   alt="SKA Logo" 
-                  className="relative w-32 h-32 object-contain animate-glow-pulse drop-shadow-2xl"
+                  className="relative w-32 h-32 object-contain animate-glow-pulse drop-shadow-2xl rounded-3xl"
                 />
               </div>
               <h2 className="text-7xl font-bold mb-4 glow bg-gradient-to-r from-primary via-white to-accent bg-clip-text text-transparent">SKA 1946</h2>
