@@ -266,7 +266,7 @@ export default function Index() {
                         { pos: 17, team: 'Крылья Советов', i: 2, v: 1, vo: 0, po: 0, p: 1, sz: 2, sp: 2, o: 2 },
                         { pos: 18, team: 'Алмаз', i: 9, v: 0, vo: 0, po: 0, p: 9, sz: 3, sp: 29, o: 0 },
                       ].map((team, idx) => (
-                        <tr key={idx} className="border-b border-border/30 hover:bg-primary/5 transition-colors">
+                        <tr key={idx} className={`border-b transition-colors ${idx >= 14 ? 'border-red-500 bg-red-500/10 hover:bg-red-500/20' : 'border-border/30 hover:bg-primary/5'}`}>
                           <td className="py-3 px-2 font-semibold text-center">{team.pos}</td>
                           <td className="py-3 px-2 font-medium">{team.team}</td>
                           <td className="text-center py-3 px-2">{team.i}</td>
