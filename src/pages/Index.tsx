@@ -89,35 +89,41 @@ export default function Index() {
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="border-b border-border fixed top-0 left-0 right-0 z-50 bg-background">
+      <header className="border-b border-border/50 backdrop-blur-sm fixed top-0 left-0 right-0 z-50 bg-background/80">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <img 
-                src="https://avatars.mds.yandex.net/i?id=3976efaf5861705854b412324ef3dfc6a54b2768-5507593-images-thumbs&n=13" 
-                alt="SKA Logo" 
-                className="w-10 h-10 object-contain"
-              />
-              <div>
-                <h1 className="text-xl font-bold">SKA 1946</h1>
-                <p className="text-xs text-muted-foreground">VFHL | PUCK LEAGUE</p>
+            <div className="flex items-center gap-4">
+              <div className="flex items-center gap-3">
+                <img 
+                  src="https://avatars.mds.yandex.net/i?id=3976efaf5861705854b412324ef3dfc6a54b2768-5507593-images-thumbs&n=13" 
+                  alt="SKA Logo" 
+                  className="w-12 h-12 object-contain"
+                />
+                <div>
+                  <h1 className="text-2xl font-bold text-gradient">SKA 1946</h1>
+                  <p className="text-xs text-muted-foreground">VFHL | PUCK LEAGUE</p>
+                </div>
               </div>
             </div>
-            <Badge variant="outline" className="text-sm">13th Place</Badge>
+            <Badge variant="secondary" className="text-sm px-4 py-2 bg-secondary/80 border border-primary/20">13th Place</Badge>
           </div>
         </div>
       </header>
 
-      <nav className="fixed top-[65px] left-0 right-0 z-40 bg-background border-b border-border">
+      <nav className="fixed top-[73px] left-0 right-0 z-40 bg-secondary/50 backdrop-blur-md border-b border-border/30">
         <div className="container mx-auto px-4">
-          <div className="flex items-center gap-1 overflow-x-auto py-2">
+          <div className="flex items-center gap-2 overflow-x-auto py-3">
             {sections.map((section) => (
               <Button
                 key={section.id}
                 variant={activeSection === section.id ? 'default' : 'ghost'}
                 size="sm"
                 onClick={() => setActiveSection(section.id)}
-                className="flex items-center gap-2"
+                className={`flex items-center gap-2 transition-all ${
+                  activeSection === section.id
+                    ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/30'
+                    : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                }`}
               >
                 <Icon name={section.icon as any} size={16} />
                 {section.label}
@@ -129,69 +135,79 @@ export default function Index() {
 
       <main className="pt-[145px] pb-12">
         <div className="container mx-auto px-4">
-          <div className="mb-12 border border-border rounded-lg overflow-hidden bg-card">
-            <div className="h-[300px] flex flex-col items-center justify-center text-center px-6 py-12">
-              <img 
-                src="https://avatars.mds.yandex.net/i?id=3976efaf5861705854b412324ef3dfc6a54b2768-5507593-images-thumbs&n=13" 
-                alt="SKA Logo" 
-                className="w-24 h-24 object-contain mb-6"
-              />
-              <h2 className="text-4xl font-bold mb-2">SKA 1946</h2>
-              <p className="text-muted-foreground mb-8">VFHL | PUCK League Season 2025</p>
-              <div className="flex gap-12">
-                <div className="text-center">
-                  <div className="text-3xl font-bold mb-1">13</div>
-                  <div className="text-sm text-muted-foreground">Position</div>
+          <div className="relative mb-12 rounded-2xl overflow-hidden h-[500px] bg-gradient-to-br from-primary/30 via-secondary to-accent/30 border-2 border-primary/40 animate-fade-in shadow-2xl shadow-primary/20">
+            <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAwIDAgTCAyMCAwIEwgMjAgMjAgTCAwIDIwIFoiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-40"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-accent/10"></div>
+            <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6">
+              <div className="mb-8 relative">
+                <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full"></div>
+                <img 
+                  src="https://avatars.mds.yandex.net/i?id=3976efaf5861705854b412324ef3dfc6a54b2768-5507593-images-thumbs&n=13" 
+                  alt="SKA Logo" 
+                  className="relative w-32 h-32 object-contain animate-glow-pulse drop-shadow-2xl rounded-3xl"
+                />
+              </div>
+              <h2 className="text-7xl font-bold mb-4 glow bg-gradient-to-r from-primary via-white to-accent bg-clip-text text-transparent">SKA 1946</h2>
+              <p className="text-2xl text-foreground/90 mb-8 font-medium">VFHL | PUCK League Season 2025</p>
+              <div className="flex gap-8 text-center">
+                <div className="bg-background/60 backdrop-blur-md px-8 py-4 rounded-xl border-2 border-primary/40 shadow-lg shadow-primary/20 hover:scale-105 transition-transform">
+                  <div className="text-4xl font-bold text-primary mb-1">13</div>
+                  <div className="text-sm text-muted-foreground font-medium">Position</div>
                 </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold mb-1">5</div>
-                  <div className="text-sm text-muted-foreground">Players</div>
+                <div className="bg-background/60 backdrop-blur-md px-8 py-4 rounded-xl border-2 border-accent/40 shadow-lg shadow-accent/20 hover:scale-105 transition-transform">
+                  <div className="text-4xl font-bold text-accent mb-1">5</div>
+                  <div className="text-sm text-muted-foreground font-medium">Players</div>
                 </div>
               </div>
             </div>
           </div>
 
           {activeSection === 'team' && (
-            <div>
-              <h2 className="text-2xl font-bold mb-6">Roster</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {teamRoster.map((player) => (
+            <div className="animate-slide-up">
+              <h2 className="text-4xl font-bold mb-8 flex items-center gap-3">
+                <Icon name="Users" size={32} className="text-primary" />
+                <span className="text-gradient">Roster</span>
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {teamRoster.map((player, index) => (
                   <Card
                     key={player.number}
-                    className="p-4 hover:border-primary transition-colors"
+                    className="group relative overflow-hidden bg-card/80 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/20 animate-slide-up"
+                    style={{ animationDelay: `${index * 100}ms` }}
                   >
-                    <div className="flex items-start justify-between mb-4">
-                      <div className="w-12 h-12 rounded-full overflow-hidden border border-border">
-                        <img 
-                          src="https://cdn.poehali.dev/files/8bb9cdc1-0225-436c-9095-69e5155d7dbc.png" 
-                          alt={player.name}
-                          className="w-full h-full object-cover"
-                        />
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary/10 to-accent/10 rounded-bl-full transition-all group-hover:scale-150 group-hover:opacity-20"></div>
+                    <div className="relative p-6">
+                      <div className="flex items-start justify-between mb-4">
+                        <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-2xl font-bold border-4 border-background shadow-lg group-hover:scale-110 transition-transform">
+                          {player.number}
+                        </div>
+                        <Badge variant="outline" className="text-xs border-primary/30 bg-primary/10">
+                          {player.position}
+                        </Badge>
                       </div>
-                      <Badge variant="outline" className="text-xs">
-                        {player.position}
-                      </Badge>
-                    </div>
-                    <h3 className="text-xl font-bold mb-4">
-                      {player.name}
-                    </h3>
-                    <div className="flex gap-2">
-                      <Button 
-                        size="sm" 
-                        variant="default"
-                        className="flex-1"
-                        onClick={() => openDialog(player, 'stats')}
-                      >
-                        Stats
-                      </Button>
-                      <Button 
-                        size="sm" 
-                        variant="outline"
-                        className="flex-1"
-                        onClick={() => openDialog(player, 'profile')}
-                      >
-                        Profile
-                      </Button>
+                      <h3 className="text-2xl font-bold mb-6 group-hover:text-primary transition-colors">
+                        {player.name}
+                      </h3>
+                      <div className="flex gap-2">
+                        <Button 
+                          size="sm" 
+                          variant="default"
+                          className="flex-1 bg-primary hover:bg-primary/90 text-white"
+                          onClick={() => openDialog(player, 'stats')}
+                        >
+                          <Icon name="BarChart2" size={14} className="mr-1" />
+                          Stats
+                        </Button>
+                        <Button 
+                          size="sm" 
+                          variant="outline"
+                          className="flex-1 border-accent text-accent hover:bg-accent hover:text-white"
+                          onClick={() => openDialog(player, 'profile')}
+                        >
+                          <Icon name="User" size={14} className="mr-1" />
+                          Profile
+                        </Button>
+                      </div>
                     </div>
                   </Card>
                 ))}
