@@ -191,9 +191,34 @@ export default function Index() {
                           {player.name}
                         </h3>
                         <div className="pt-2 border-t border-border">
-                          <div className="text-xs">
-                            <div className="text-muted-foreground uppercase tracking-wider">GP</div>
-                            <div className="font-bold text-foreground">{player.games}</div>
+                          <div className="flex justify-around text-xs">
+                            {player.position === 'GK' ? (
+                              <>
+                                <div>
+                                  <div className="text-muted-foreground uppercase tracking-wider">W</div>
+                                  <div className="font-bold text-foreground">{player.wins}</div>
+                                </div>
+                                <div>
+                                  <div className="text-muted-foreground uppercase tracking-wider">SV</div>
+                                  <div className="font-bold text-foreground">{player.saves}</div>
+                                </div>
+                              </>
+                            ) : (
+                              <>
+                                <div>
+                                  <div className="text-muted-foreground uppercase tracking-wider">G</div>
+                                  <div className="font-bold text-foreground">{player.goals}</div>
+                                </div>
+                                <div>
+                                  <div className="text-muted-foreground uppercase tracking-wider">A</div>
+                                  <div className="font-bold text-foreground">{player.assists}</div>
+                                </div>
+                              </>
+                            )}
+                            <div>
+                              <div className="text-muted-foreground uppercase tracking-wider">GP</div>
+                              <div className="font-bold text-foreground">{player.games}</div>
+                            </div>
                           </div>
                         </div>
                       </div>
