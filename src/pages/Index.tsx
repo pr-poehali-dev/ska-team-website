@@ -497,7 +497,14 @@ export default function Index() {
                     </div>
                     <div>
                       <h3 className="font-bold mb-1">Telegram</h3>
-                      <p className="text-muted-foreground">@W6xxysick_blk</p>
+                      <a 
+                        href="https://t.me/W6xxysick_blk" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-muted-foreground hover:text-primary transition-colors underline"
+                      >
+                        @W6xxysick_blk
+                      </a>
                     </div>
                   </div>
                 </div>
