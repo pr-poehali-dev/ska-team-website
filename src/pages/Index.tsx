@@ -168,26 +168,63 @@ export default function Index() {
                 <Icon name="Users" size={32} className="text-primary" />
                 <span className="text-gradient">Roster</span>
               </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
                 {teamRoster.map((player) => (
-                  <Card key={player.number} className="p-4">
-                    <div className="flex items-start justify-between mb-3">
-                      <div className="w-12 h-12 rounded-full overflow-hidden border border-border bg-primary/10 flex items-center justify-center">
+                  <Card key={player.number} className="relative overflow-hidden bg-gradient-to-br from-card to-card/80 border-2 border-primary/20 hover:border-primary/50 transition-all hover:scale-105 hover:shadow-2xl hover:shadow-primary/30">
+                    <div className="absolute top-0 right-0 text-[120px] font-black text-primary/5 leading-none pr-2">
+                      {player.number}
+                    </div>
+                    <div className="relative p-4">
+                      <div className="flex justify-between items-start mb-4">
+                        <Badge variant="default" className="bg-primary text-primary-foreground text-xs font-bold px-2 py-0.5">
+                          {player.position}
+                        </Badge>
+                        <div className="text-2xl font-black text-foreground/90">
+                          {player.number}
+                        </div>
+                      </div>
+                      <div className="w-full aspect-square mb-4 rounded-lg bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center border border-primary/20">
                         <img 
                           src="https://tickets-hockey.ru/wp-content/uploads/ubs/team/872/ska-1946-mhl.svg" 
                           alt={player.name}
-                          className="w-8 h-8 object-contain"
+                          className="w-3/4 h-3/4 object-contain opacity-80"
                         />
                       </div>
-                      <Badge variant="outline" className="text-xs">
-                        {player.position}
-                      </Badge>
-                    </div>
-                    <h3 className="text-lg font-bold mb-3">{player.name}</h3>
-                    <div className="text-sm">
-                      <div className="flex justify-between">
-                        <span className="text-muted-foreground">Игр:</span>
-                        <span className="font-medium">{player.games}</span>
+                      <div className="text-center">
+                        <h3 className="text-lg font-black uppercase tracking-tight leading-tight">
+                          {player.name}
+                        </h3>
+                        <div className="mt-2 pt-2 border-t border-border/50">
+                          <div className="flex justify-around text-xs">
+                            {player.position === 'GK' ? (
+                              <>
+                                <div>
+                                  <div className="text-muted-foreground">W</div>
+                                  <div className="font-bold">{player.wins}</div>
+                                </div>
+                                <div>
+                                  <div className="text-muted-foreground">SV</div>
+                                  <div className="font-bold">{player.saves}</div>
+                                </div>
+                              </>
+                            ) : (
+                              <>
+                                <div>
+                                  <div className="text-muted-foreground">G</div>
+                                  <div className="font-bold">{player.goals}</div>
+                                </div>
+                                <div>
+                                  <div className="text-muted-foreground">A</div>
+                                  <div className="font-bold">{player.assists}</div>
+                                </div>
+                              </>
+                            )}
+                            <div>
+                              <div className="text-muted-foreground">GP</div>
+                              <div className="font-bold">{player.games}</div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </Card>
