@@ -184,34 +184,11 @@ export default function Index() {
                       </Badge>
                     </div>
                     <h3 className="text-lg font-bold mb-3">{player.name}</h3>
-                    <div className="space-y-2 text-sm">
+                    <div className="text-sm">
                       <div className="flex justify-between">
                         <span className="text-muted-foreground">Игр:</span>
                         <span className="font-medium">{player.games}</span>
                       </div>
-                      {player.position === 'GK' ? (
-                        <>
-                          <div className="flex justify-between">
-                            <span className="text-muted-foreground">Побед:</span>
-                            <span className="font-medium">{player.wins}</span>
-                          </div>
-                          <div className="flex justify-between">
-                            <span className="text-muted-foreground">Сейвов:</span>
-                            <span className="font-medium">{player.saves}</span>
-                          </div>
-                        </>
-                      ) : (
-                        <>
-                          <div className="flex justify-between">
-                            <span className="text-muted-foreground">Голы:</span>
-                            <span className="font-medium">{player.goals}</span>
-                          </div>
-                          <div className="flex justify-between">
-                            <span className="text-muted-foreground">Передачи:</span>
-                            <span className="font-medium">{player.assists}</span>
-                          </div>
-                        </>
-                      )}
                     </div>
                   </Card>
                 ))}
