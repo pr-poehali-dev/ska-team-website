@@ -529,14 +529,10 @@ export default function Index() {
                 </DialogDescription>
               </DialogHeader>
               <div className="space-y-4 mt-4">
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 gap-4">
                   <div className="bg-primary/10 rounded-lg p-4 border border-primary/20">
                     <div className="text-3xl font-bold text-primary">{selectedPlayer.games}</div>
                     <div className="text-sm text-muted-foreground">Игр сыграно</div>
-                  </div>
-                  <div className="bg-accent/10 rounded-lg p-4 border border-accent/20">
-                    <div className="text-3xl font-bold text-accent">{selectedPlayer.stats}</div>
-                    <div className="text-sm text-muted-foreground">Рейтинг</div>
                   </div>
                 </div>
                 {selectedPlayer.position === 'GK' ? (
