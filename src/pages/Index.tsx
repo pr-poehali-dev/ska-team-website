@@ -105,7 +105,10 @@ export default function Index() {
                 </div>
               </div>
             </div>
-            <Badge variant="secondary" className="text-sm px-4 py-2 bg-secondary/80 border border-primary/20">13th Place</Badge>
+            <Badge variant="secondary" className="text-sm px-4 py-2 bg-secondary/80 border border-primary/20">
+              <Icon name="Trophy" size={16} className="mr-2" />
+              9th Place
+            </Badge>
           </div>
         </div>
       </header>
@@ -178,12 +181,8 @@ export default function Index() {
                     <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary/10 to-accent/10 rounded-bl-full transition-all group-hover:scale-150 group-hover:opacity-20"></div>
                     <div className="relative p-6">
                       <div className="flex items-start justify-between mb-4">
-                        <div className="w-16 h-16 rounded-full overflow-hidden border-4 border-background shadow-lg group-hover:scale-110 transition-transform">
-                          <img 
-                            src="https://cdn.poehali.dev/files/8bb9cdc1-0225-436c-9095-69e5155d7dbc.png" 
-                            alt={player.name}
-                            className="w-full h-full object-cover"
-                          />
+                        <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-2xl font-bold border-4 border-background shadow-lg group-hover:scale-110 transition-transform">
+                          {player.number}
                         </div>
                         <Badge variant="outline" className="text-xs border-primary/30 bg-primary/10">
                           {player.position}
