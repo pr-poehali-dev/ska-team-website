@@ -478,16 +478,7 @@ export default function Index() {
                 <span className="text-gradient">Contacts</span>
               </h2>
               <Card className="p-8 bg-card/80 backdrop-blur-sm border-border/50">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center">
-                      <Icon name="Mail" size={24} className="text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="font-bold mb-1">telegram channel</h3>
-                      <p className="text-muted-foreground">https://t.me/SKA1946VFHL</p>
-                    </div>
-                  </div>
+                <div className="grid md:grid-cols-1 gap-6">
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 bg-accent/20 rounded-lg flex items-center justify-center">
                       <Icon name="MessageSquare" size={24} className="text-accent" />
