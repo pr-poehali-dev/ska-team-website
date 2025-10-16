@@ -497,7 +497,7 @@ export default function Index() {
                     </div>
                     <div>
                       <h3 className="font-bold mb-1">Telegram</h3>
-                      <p className="text-muted-foreground">SKA_1946#team</p>
+                      <p className="text-muted-foreground">@W6xxysick_blk</p>
                     </div>
                   </div>
                 </div>
