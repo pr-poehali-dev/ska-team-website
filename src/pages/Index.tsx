@@ -598,6 +598,17 @@ export default function Index() {
                   <div className="text-sm text-muted-foreground mb-2">О игроке</div>
                   <p className="text-base">{selectedPlayer.bio}</p>
                 </div>
+                <div className="p-4 bg-secondary/50 rounded-lg">
+                  <div className="text-sm text-muted-foreground mb-2">Telegram</div>
+                  <a 
+                    href="https://t.me/SKA1946VFHL" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-primary hover:text-primary/80 transition-colors underline text-base font-medium"
+                  >
+                    https://t.me/SKA1946VFHL
+                  </a>
+                </div>
               </div>
             </>
           )}
