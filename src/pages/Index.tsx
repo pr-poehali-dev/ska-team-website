@@ -17,7 +17,7 @@ const teamRoster = [
     name: 'BAGA', 
     position: 'GK', 
     stats: '3775',
-    games: 42,
+    games: 5,
     wins: 28,
     saves: 1247,
     bio: 'Опытный вратарь с отличной реакцией'
