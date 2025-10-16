@@ -488,7 +488,7 @@ export default function Index() {
                     </div>
                     <div>
                       <h3 className="font-bold mb-1">telegram channel</h3>
-                      <p className="text-muted-foreground">ska1946@vfhl.com</p>
+                      <p className="text-muted-foreground">https://t.me/SKA1946VFHL</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
