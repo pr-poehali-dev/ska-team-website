@@ -168,46 +168,50 @@ export default function Index() {
                 <Icon name="Users" size={32} className="text-primary" />
                 <span className="text-gradient">Roster</span>
               </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {teamRoster.map((player, index) => (
-                  <Card
-                    key={player.number}
-                    className="group relative overflow-hidden bg-card/80 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/20 animate-slide-up"
-                    style={{ animationDelay: `${index * 100}ms` }}
-                  >
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary/10 to-accent/10 rounded-bl-full transition-all group-hover:scale-150 group-hover:opacity-20"></div>
-                    <div className="relative p-6">
-                      <div className="flex items-start justify-between mb-4">
-                        <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-2xl font-bold border-4 border-background shadow-lg group-hover:scale-110 transition-transform">
-                          {player.number}
-                        </div>
-                        <Badge variant="outline" className="text-xs border-primary/30 bg-primary/10">
-                          {player.position}
-                        </Badge>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {teamRoster.map((player) => (
+                  <Card key={player.number} className="p-4">
+                    <div className="flex items-start justify-between mb-3">
+                      <div className="w-12 h-12 rounded-full overflow-hidden border border-border">
+                        <img 
+                          src="https://cdn.poehali.dev/files/8bb9cdc1-0225-436c-9095-69e5155d7dbc.png" 
+                          alt={player.name}
+                          className="w-full h-full object-cover"
+                        />
                       </div>
-                      <h3 className="text-2xl font-bold mb-6 group-hover:text-primary transition-colors">
-                        {player.name}
-                      </h3>
-                      <div className="flex gap-2">
-                        <Button 
-                          size="sm" 
-                          variant="default"
-                          className="flex-1 bg-primary hover:bg-primary/90 text-white"
-                          onClick={() => openDialog(player, 'stats')}
-                        >
-                          <Icon name="BarChart2" size={14} className="mr-1" />
-                          Stats
-                        </Button>
-                        <Button 
-                          size="sm" 
-                          variant="outline"
-                          className="flex-1 border-accent text-accent hover:bg-accent hover:text-white"
-                          onClick={() => openDialog(player, 'profile')}
-                        >
-                          <Icon name="User" size={14} className="mr-1" />
-                          Profile
-                        </Button>
+                      <Badge variant="outline" className="text-xs">
+                        {player.position}
+                      </Badge>
+                    </div>
+                    <h3 className="text-lg font-bold mb-3">{player.name}</h3>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">Игр:</span>
+                        <span className="font-medium">{player.games}</span>
                       </div>
+                      {player.position === 'GK' ? (
+                        <>
+                          <div className="flex justify-between">
+                            <span className="text-muted-foreground">Побед:</span>
+                            <span className="font-medium">{player.wins}</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-muted-foreground">Сейвов:</span>
+                            <span className="font-medium">{player.saves}</span>
+                          </div>
+                        </>
+                      ) : (
+                        <>
+                          <div className="flex justify-between">
+                            <span className="text-muted-foreground">Голы:</span>
+                            <span className="font-medium">{player.goals}</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-muted-foreground">Передачи:</span>
+                            <span className="font-medium">{player.assists}</span>
+                          </div>
+                        </>
+                      )}
                     </div>
                   </Card>
                 ))}
