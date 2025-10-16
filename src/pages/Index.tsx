@@ -57,7 +57,7 @@ const teamRoster = [
     name: 'max', 
     position: 'PW', 
     stats: '2780',
-    games: 39,
+    games: 6,
     goals: 28,
     assists: 24,
     bio: 'Быстрый форвард правого фланга'
