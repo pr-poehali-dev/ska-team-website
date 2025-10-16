@@ -37,7 +37,7 @@ const teamRoster = [
     name: 'extazy', 
     position: 'LD', 
     stats: '3120',
-    games: 41,
+    games: 6,
     goals: 12,
     assists: 28,
     bio: 'Надежный защитник левого фланга'
