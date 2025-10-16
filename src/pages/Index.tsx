@@ -105,10 +105,7 @@ export default function Index() {
                 </div>
               </div>
             </div>
-            <Badge variant="secondary" className="text-sm px-4 py-2 bg-secondary/80 border border-primary/20">
-              <Icon name="Trophy" size={16} className="mr-2" />
-              9th Place
-            </Badge>
+            <Badge variant="secondary" className="text-sm px-4 py-2 bg-secondary/80 border border-primary/20">13th Place</Badge>
           </div>
         </div>
       </header>
