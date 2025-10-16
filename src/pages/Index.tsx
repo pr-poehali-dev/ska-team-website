@@ -89,43 +89,41 @@ export default function Index() {
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="border-b border-border/50 backdrop-blur-sm fixed top-0 left-0 right-0 z-50 bg-background/80">
-        <div className="container mx-auto px-4 py-4">
+      <header className="border-b border-border backdrop-blur-sm fixed top-0 left-0 right-0 z-50 bg-card/95">
+        <div className="container mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <div className="flex items-center gap-3">
-                <img 
-                  src="https://avatars.mds.yandex.net/i?id=3976efaf5861705854b412324ef3dfc6a54b2768-5507593-images-thumbs&n=13" 
-                  alt="SKA Logo" 
-                  className="w-12 h-12 object-contain"
-                />
-                <div>
-                  <h1 className="text-2xl font-bold text-gradient">SKA 1946</h1>
-                  <p className="text-xs text-muted-foreground">VFHL | PUCK LEAGUE</p>
-                </div>
+            <div className="flex items-center gap-3">
+              <img 
+                src="https://avatars.mds.yandex.net/i?id=3976efaf5861705854b412324ef3dfc6a54b2768-5507593-images-thumbs&n=13" 
+                alt="SKA Logo" 
+                className="w-10 h-10 object-contain"
+              />
+              <div>
+                <h1 className="text-xl font-bold">SKA 1946</h1>
+                <p className="text-xs text-muted-foreground">VFHL | PUCK LEAGUE</p>
               </div>
             </div>
-            <Badge variant="secondary" className="text-sm px-4 py-2 bg-secondary/80 border border-primary/20">13th Place</Badge>
+            <Badge variant="secondary" className="text-xs px-3 py-1 bg-secondary border border-border">13th Place</Badge>
           </div>
         </div>
       </header>
 
-      <nav className="fixed top-[73px] left-0 right-0 z-40 bg-secondary/50 backdrop-blur-md border-b border-border/30">
+      <nav className="fixed top-[65px] left-0 right-0 z-40 bg-card/95 backdrop-blur-sm border-b border-border">
         <div className="container mx-auto px-4">
-          <div className="flex items-center gap-2 overflow-x-auto py-3">
+          <div className="flex items-center gap-2 overflow-x-auto py-2">
             {sections.map((section) => (
               <Button
                 key={section.id}
                 variant={activeSection === section.id ? 'default' : 'ghost'}
                 size="sm"
                 onClick={() => setActiveSection(section.id)}
-                className={`flex items-center gap-2 transition-all ${
+                className={`flex items-center gap-2 text-sm ${
                   activeSection === section.id
-                    ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/30'
-                    : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                    ? 'bg-primary text-primary-foreground'
+                    : 'text-muted-foreground hover:text-foreground hover:bg-secondary'
                 }`}
               >
-                <Icon name={section.icon as any} size={16} />
+                <Icon name={section.icon as any} size={14} />
                 {section.label}
               </Button>
             ))}
@@ -133,30 +131,28 @@ export default function Index() {
         </div>
       </nav>
 
-      <main className="pt-[145px] pb-12">
+      <main className="pt-[120px] pb-12">
         <div className="container mx-auto px-4">
-          <div className="relative mb-12 rounded-2xl overflow-hidden h-[500px] bg-gradient-to-br from-primary/30 via-secondary to-accent/30 border-2 border-primary/40 animate-fade-in shadow-2xl shadow-primary/20">
-            <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAwIDAgTCAyMCAwIEwgMjAgMjAgTCAwIDIwIFoiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-40"></div>
-            <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-accent/10"></div>
+          <div className="relative mb-12 rounded-xl overflow-hidden h-[400px] bg-card border border-border/50">
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5"></div>
             <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6">
-              <div className="mb-8 relative">
-                <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full"></div>
+              <div className="mb-6">
                 <img 
                   src="https://avatars.mds.yandex.net/i?id=3976efaf5861705854b412324ef3dfc6a54b2768-5507593-images-thumbs&n=13" 
                   alt="SKA Logo" 
-                  className="relative w-32 h-32 object-contain animate-glow-pulse drop-shadow-2xl rounded-3xl"
+                  className="w-24 h-24 object-contain"
                 />
               </div>
-              <h2 className="text-7xl font-bold mb-4 glow bg-gradient-to-r from-primary via-white to-accent bg-clip-text text-transparent">SKA 1946</h2>
-              <p className="text-2xl text-foreground/90 mb-8 font-medium">VFHL | PUCK League Season 2025</p>
-              <div className="flex gap-8 text-center">
-                <div className="bg-background/60 backdrop-blur-md px-8 py-4 rounded-xl border-2 border-primary/40 shadow-lg shadow-primary/20 hover:scale-105 transition-transform">
-                  <div className="text-4xl font-bold text-primary mb-1">13</div>
-                  <div className="text-sm text-muted-foreground font-medium">Position</div>
+              <h2 className="text-6xl font-bold mb-3">SKA 1946</h2>
+              <p className="text-lg text-muted-foreground mb-8">VFHL | PUCK League Season 2025</p>
+              <div className="flex gap-6">
+                <div className="bg-card/80 backdrop-blur-sm px-6 py-3 rounded-lg border border-border/50">
+                  <div className="text-3xl font-bold text-primary mb-1">13</div>
+                  <div className="text-xs text-muted-foreground uppercase tracking-wider">Position</div>
                 </div>
-                <div className="bg-background/60 backdrop-blur-md px-8 py-4 rounded-xl border-2 border-accent/40 shadow-lg shadow-accent/20 hover:scale-105 transition-transform">
-                  <div className="text-4xl font-bold text-accent mb-1">5</div>
-                  <div className="text-sm text-muted-foreground font-medium">Players</div>
+                <div className="bg-card/80 backdrop-blur-sm px-6 py-3 rounded-lg border border-border/50">
+                  <div className="text-3xl font-bold text-accent mb-1">5</div>
+                  <div className="text-xs text-muted-foreground uppercase tracking-wider">Players</div>
                 </div>
               </div>
             </div>
@@ -164,30 +160,42 @@ export default function Index() {
 
           {activeSection === 'team' && (
             <div className="animate-slide-up">
-              <h2 className="text-4xl font-bold mb-8 flex items-center gap-3">
-                <Icon name="Users" size={32} className="text-primary" />
-                <span className="text-gradient">Roster</span>
+              <h2 className="text-3xl font-bold mb-6 flex items-center gap-2">
+                <Icon name="Users" size={28} />
+                <span>Roster</span>
               </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
                 {teamRoster.map((player) => (
-                  <Card key={player.number} className="p-4">
-                    <div className="flex items-start justify-between mb-3">
-                      <div className="w-12 h-12 rounded-full overflow-hidden border border-border bg-primary/10 flex items-center justify-center">
+                  <Card key={player.number} className="relative overflow-hidden bg-card border border-border hover:border-primary/30 transition-all">
+                    <div className="absolute top-0 right-0 text-[100px] font-black text-foreground/3 leading-none pr-1">
+                      {player.number}
+                    </div>
+                    <div className="relative p-3">
+                      <div className="flex justify-between items-start mb-3">
+                        <Badge variant="default" className="bg-primary text-primary-foreground text-xs font-bold px-2 py-0.5">
+                          {player.position}
+                        </Badge>
+                        <div className="text-xl font-black text-foreground/80">
+                          {player.number}
+                        </div>
+                      </div>
+                      <div className="w-full aspect-square mb-3 rounded-lg bg-secondary/50 flex items-center justify-center border border-border">
                         <img 
                           src="https://tickets-hockey.ru/wp-content/uploads/ubs/team/872/ska-1946-mhl.svg" 
                           alt={player.name}
-                          className="w-8 h-8 object-contain"
+                          className="w-3/4 h-3/4 object-contain opacity-70"
                         />
                       </div>
-                      <Badge variant="outline" className="text-xs">
-                        {player.position}
-                      </Badge>
-                    </div>
-                    <h3 className="text-lg font-bold mb-3">{player.name}</h3>
-                    <div className="text-sm">
-                      <div className="flex justify-between">
-                        <span className="text-muted-foreground">Игр:</span>
-                        <span className="font-medium">{player.games}</span>
+                      <div className="text-center">
+                        <h3 className="text-base font-black uppercase tracking-tight leading-tight mb-2">
+                          {player.name}
+                        </h3>
+                        <div className="pt-2 border-t border-border">
+                          <div className="text-xs">
+                            <div className="text-muted-foreground uppercase tracking-wider">GP</div>
+                            <div className="font-bold text-foreground">{player.games}</div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </Card>
