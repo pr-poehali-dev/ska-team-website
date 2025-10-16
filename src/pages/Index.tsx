@@ -154,7 +154,7 @@ export default function Index() {
               <p className="text-2xl text-foreground/90 mb-8 font-medium">VFHL | PUCK League Season 2025</p>
               <div className="flex gap-8 text-center">
                 <div className="bg-background/60 backdrop-blur-md px-8 py-4 rounded-xl border-2 border-primary/40 shadow-lg shadow-primary/20 hover:scale-105 transition-transform">
-                  <div className="text-4xl font-bold text-primary mb-1">9</div>
+                  <div className="text-4xl font-bold text-primary mb-1">13</div>
                   <div className="text-sm text-muted-foreground font-medium">Position</div>
                 </div>
                 <div className="bg-background/60 backdrop-blur-md px-8 py-4 rounded-xl border-2 border-accent/40 shadow-lg shadow-accent/20 hover:scale-105 transition-transform">
