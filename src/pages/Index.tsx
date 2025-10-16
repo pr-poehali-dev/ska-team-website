@@ -237,15 +237,25 @@ export default function Index() {
           )}
 
           {activeSection === 'schedule' && (
-            <div className="animate-slide-up">
+            <div className="animate-slide-up space-y-6">
               <h2 className="text-4xl font-bold mb-8 flex items-center gap-3">
                 <Icon name="Calendar" size={32} className="text-primary" />
-                <span className="text-gradient">Schedule</span>
+                <span className="text-gradient">Календарь матчей</span>
               </h2>
-              <Card className="p-8 bg-card/80 backdrop-blur-sm border-border/50">
-                <div className="text-center py-12">
-                  <Icon name="CalendarDays" size={64} className="text-muted-foreground mx-auto mb-4" />
-                  <p className="text-xl text-muted-foreground">Match Schedule Coming Soon</p>
+              <Card className="bg-card/80 backdrop-blur-sm border-border/50 overflow-hidden p-4">
+                <img 
+                  src="https://cdn.poehali.dev/files/15588aca-c589-4445-9359-c2290dff97ab.png" 
+                  alt="Match Schedule Calendar" 
+                  className="w-full h-auto rounded-lg"
+                />
+              </Card>
+              <Card className="bg-card/80 backdrop-blur-sm border-border/50 overflow-hidden">
+                <div className="w-full h-[800px]">
+                  <iframe 
+                    src="https://vfhl.pythonanywhere.com/matchcalendar" 
+                    className="w-full h-full border-0"
+                    title="VFHL Match Calendar"
+                  />
                 </div>
               </Card>
             </div>
