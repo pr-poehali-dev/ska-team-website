@@ -121,9 +121,27 @@ export default function Index() {
                       <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">
                         {player.name}
                       </h3>
-                      <div className="flex items-center justify-between pt-4 border-t border-border/30">
+                      <div className="flex items-center justify-between pt-4 border-t border-border/30 mb-4">
                         <span className="text-sm text-muted-foreground">Player Rating</span>
                         <span className="text-lg font-bold text-accent">{player.stats}</span>
+                      </div>
+                      <div className="flex gap-2">
+                        <Button 
+                          size="sm" 
+                          variant="default"
+                          className="flex-1 bg-primary hover:bg-primary/90 text-white"
+                        >
+                          <Icon name="BarChart2" size={14} className="mr-1" />
+                          Stats
+                        </Button>
+                        <Button 
+                          size="sm" 
+                          variant="outline"
+                          className="flex-1 border-accent text-accent hover:bg-accent hover:text-white"
+                        >
+                          <Icon name="User" size={14} className="mr-1" />
+                          Profile
+                        </Button>
                       </div>
                     </div>
                   </Card>
