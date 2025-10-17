@@ -50,114 +50,161 @@ const teamRoster = [
     games: 38,
     goals: 35,
     assists: 18,
-    bio: 'Центральный нападающий с отличным чутьем'
+    bio: 'Центральный нападающий с отличным видением площадки'
   },
   { 
     number: 17, 
     name: 'max', 
     position: 'PW', 
-    stats: '2780',
+    stats: '3280',
     games: 6,
     goals: 28,
     assists: 24,
-    bio: 'Быстрый форвард правого фланга'
-  },
+    bio: 'Правый нападающий с мощным броском'
+  }
 ];
 
-const sections = [
-  { id: 'team', label: 'Команда', icon: 'Users' },
-  { id: 'stats', label: 'Статистика', icon: 'BarChart3' },
-  { id: 'schedule', label: 'Расписание', icon: 'Calendar' },
-  { id: 'news', label: 'Новости', icon: 'Newspaper' },
-  { id: 'contacts', label: 'Контакты', icon: 'MessageCircle' },
+const standingsData = [
+  { pos: 1, team: 'Красная Армия', i: 10, v: 8, vo: 0, po: 1, p: 1, sz: 23, sp: 9, o: 17 },
+  { pos: 2, team: 'Тюменский Легион', i: 11, v: 6, vo: 1, po: 0, p: 3, sz: 24, sp: 11, o: 16 },
+  { pos: 3, team: 'Сибирские снайперы', i: 12, v: 7, vo: 0, po: 0, p: 4, sz: 24, sp: 13, o: 15 },
+  { pos: 4, team: 'Динамо-Шинник', i: 8, v: 5, vo: 1, po: 0, p: 1, sz: 21, sp: 10, o: 14 },
+  { pos: 5, team: 'Толпар', i: 10, v: 5, vo: 0, po: 0, p: 3, sz: 26, sp: 14, o: 13 },
+  { pos: 6, team: 'Стальные Лисы', i: 7, v: 6, vo: 0, po: 0, p: 1, sz: 14, sp: 6, o: 12 },
+  { pos: 7, team: 'Омские ястребы', i: 9, v: 4, vo: 1, po: 0, p: 3, sz: 18, sp: 11, o: 11 },
+  { pos: 8, team: 'Кузнецкие медведи', i: 8, v: 5, vo: 0, po: 0, p: 3, sz: 17, sp: 11, o: 10 },
+  { pos: 9, team: 'Локо', i: 8, v: 5, vo: 0, po: 0, p: 3, sz: 15, sp: 11, o: 10 },
+  { pos: 10, team: 'Академия Михайлова', i: 8, v: 4, vo: 1, po: 0, p: 3, sz: 17, sp: 13, o: 10 },
+  { pos: 11, team: 'Белые медведи', i: 8, v: 4, vo: 0, po: 1, p: 2, sz: 14, sp: 11, o: 9 },
+  { pos: 12, team: 'Шинник', i: 8, v: 4, vo: 0, po: 0, p: 4, sz: 17, sp: 15, o: 8 },
+  { pos: 13, team: 'СКА 19-46', i: 7, v: 3, vo: 0, po: 0, p: 4, sz: 6, sp: 12, o: 6, highlight: true },
+  { pos: 14, team: 'Ермак', i: 8, v: 2, vo: 1, po: 0, p: 5, sz: 9, sp: 16, o: 6 },
+  { pos: 15, team: 'Тюменский легион-2', i: 7, v: 2, vo: 1, po: 0, p: 4, sz: 9, sp: 13, o: 6, relegation: true },
+  { pos: 16, team: 'Реактор', i: 7, v: 2, vo: 0, po: 1, p: 3, sz: 10, sp: 15, o: 5, relegation: true },
+  { pos: 17, team: 'Капитан Ступино', i: 8, v: 2, vo: 0, po: 0, p: 6, sz: 7, sp: 17, o: 4, relegation: true },
+  { pos: 18, team: 'Алмаз', i: 7, v: 0, vo: 0, po: 0, p: 7, sz: 3, sp: 21, o: 0, relegation: true },
+];
+
+const scheduleMatches = [
+  { date: 25, month: 10, team1: 'СКА', team2: 'Белые медведи', time: '17:30', isHome: true },
+  { date: 26, month: 10, team1: 'СКА', team2: 'Красная армия', time: '17:30', isHome: true },
+  { date: 27, month: 10, team1: 'СКА', team2: 'Сибирские снайперы', time: '17:30', isHome: true },
+  { date: 30, month: 10, team1: 'Омские ястребы', team2: 'СКА', time: '16:30', isHome: false },
+  { date: 31, month: 10, team1: 'Толпар', team2: 'СКА', time: '16:30', isHome: false },
+  { date: 1, month: 11, team1: 'Академия Михайлова', team2: 'СКА', time: '16:30', isHome: false },
+  { date: 8, month: 11, team1: 'СКА', team2: 'Стальные лисы', time: '18:30', isHome: true },
+  { date: 15, month: 11, team1: 'СКА', team2: 'Локо', time: '16:30', isHome: true },
+  { date: 18, month: 11, team1: 'Шинник', team2: 'СКА', time: '18:30', isHome: false },
+  { date: 22, month: 11, team1: 'СКА', team2: 'Кузнецкие медведи', time: '17:30', isHome: true },
+  { date: 24, month: 11, team1: 'Алмаз', team2: 'СКА', time: '16:30', isHome: false },
 ];
 
 export default function Index() {
-  const [activeSection, setActiveSection] = useState('team');
+  const [activeSection, setActiveSection] = useState<'team' | 'stats' | 'schedule' | 'news' | 'contacts'>('team');
   const [selectedPlayer, setSelectedPlayer] = useState<typeof teamRoster[0] | null>(null);
-  const [dialogType, setDialogType] = useState<'stats' | 'profile' | null>(null);
+  const [dialogType, setDialogType] = useState<'stats' | 'profile'>('stats');
 
   const openDialog = (player: typeof teamRoster[0], type: 'stats' | 'profile') => {
     setSelectedPlayer(player);
     setDialogType(type);
   };
 
-  const closeDialog = () => {
-    setSelectedPlayer(null);
-    setDialogType(null);
+  const getCalendarDays = () => {
+    const days = [];
+    const daysOfWeek = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
+    
+    for (let i = 1; i <= 30; i++) {
+      const match = scheduleMatches.find(m => m.date === i && m.month === 10);
+      days.push({ date: i, match });
+    }
+    
+    return { daysOfWeek, days };
   };
 
+  const calendar = getCalendarDays();
+
   return (
-    <div className="min-h-screen bg-background">
-      <header className="border-b border-border/50 backdrop-blur-sm fixed top-0 left-0 right-0 z-50 bg-background/80">
+    <div className="min-h-screen bg-background text-foreground">
+      <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm bg-background/80 border-b border-border/50">
         <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <div className="flex items-center gap-3">
-                <img 
-                  src="https://avatars.mds.yandex.net/i?id=3976efaf5861705854b412324ef3dfc6a54b2768-5507593-images-thumbs&n=13" 
-                  alt="SKA Logo" 
-                  className="w-12 h-12 object-contain"
-                />
-                <div>
-                  <h1 className="text-2xl font-bold text-gradient">SKA 1946</h1>
-                  <p className="text-xs text-muted-foreground">VFHL | PUCK LEAGUE</p>
-                </div>
-              </div>
+          <div className="flex items-center gap-4">
+            <img 
+              src="https://avatars.mds.yandex.net/i?id=3976efaf5861705854b412324ef3dfc6a54b2768-5507593-images-thumbs&n=13" 
+              alt="SKA Logo" 
+              className="w-12 h-12 drop-shadow-lg"
+            />
+            <div className="flex-1">
+              <h1 className="text-2xl font-bold text-gradient">SKA 1946</h1>
+              <p className="text-xs text-muted-foreground">VFHL | PUCK LEAGUE</p>
             </div>
-            <Badge variant="secondary" className="text-sm px-4 py-2 bg-secondary/80 border border-primary/20">13th Place</Badge>
+            <Badge variant="secondary" className="border border-border">13th Place</Badge>
           </div>
         </div>
       </header>
 
-      <nav className="fixed top-[73px] left-0 right-0 z-40 bg-secondary/50 backdrop-blur-md border-b border-border/30">
+      <nav className="fixed top-[76px] left-0 right-0 z-40 backdrop-blur-md bg-background/95 border-b border-border">
         <div className="container mx-auto px-4">
-          <div className="flex items-center gap-2 overflow-x-auto py-3">
-            {sections.map((section) => (
+          <div className="flex gap-2 overflow-x-auto py-3">
+            {[
+              { id: 'team', label: 'Команда', icon: 'Users' },
+              { id: 'stats', label: 'Статистика', icon: 'BarChart3' },
+              { id: 'schedule', label: 'Расписание', icon: 'Calendar' },
+              { id: 'news', label: 'Новости', icon: 'Newspaper' },
+              { id: 'contacts', label: 'Контакты', icon: 'MessageCircle' },
+            ].map((item) => (
               <Button
-                key={section.id}
-                variant={activeSection === section.id ? 'default' : 'ghost'}
+                key={item.id}
+                variant={activeSection === item.id ? 'default' : 'ghost'}
                 size="sm"
-                onClick={() => setActiveSection(section.id)}
-                className={`flex items-center gap-2 transition-all ${
-                  activeSection === section.id
-                    ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/30'
-                    : 'text-muted-foreground hover:text-foreground hover:bg-muted'
-                }`}
+                onClick={() => setActiveSection(item.id as any)}
+                className={activeSection === item.id ? 'shadow-lg shadow-primary/30' : ''}
               >
-                <Icon name={section.icon as any} size={16} />
-                {section.label}
+                <Icon name={item.icon as any} size={16} />
+                <span className="ml-2">{item.label}</span>
               </Button>
             ))}
           </div>
         </div>
       </nav>
 
-      <main className="pt-[145px] pb-12">
-        <div className="container mx-auto px-4">
-          <div className="relative mb-12 rounded-2xl overflow-hidden h-[500px] bg-gradient-to-br from-primary/30 via-secondary to-accent/30 border-2 border-primary/40 animate-fade-in shadow-2xl shadow-primary/20">
-            <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAwIDAgTCAyMCAwIEwgMjAgMjAgTCAwIDIwIFoiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-40"></div>
-            <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-accent/10"></div>
-            <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6">
-              <div className="mb-8 relative">
-                <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full"></div>
+      <div className="pt-[145px] pb-16">
+        <div className="container mx-auto px-4 max-w-[1400px]">
+          <div className="relative mb-12 rounded-2xl overflow-hidden border-2 border-primary/40 shadow-2xl shadow-primary/20" style={{ height: '500px' }}>
+            <div 
+              className="absolute inset-0 bg-gradient-to-br from-primary/30 via-secondary to-accent/30"
+              style={{
+                backgroundImage: `url("data:image/svg+xml,%3Csvg width='20' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h20v20H0z' fill='none'/%3E%3Cpath d='M0 0h20v20H0z' fill='white' fill-opacity='0.05'/%3E%3C/svg%3E")`,
+                backgroundSize: '20px 20px'
+              }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10" />
+            
+            <div className="relative h-full flex flex-col items-center justify-center text-center px-4">
+              <div className="relative mb-6">
+                <div className="absolute inset-0 blur-3xl bg-primary/20 animate-glow-pulse" />
                 <img 
                   src="https://avatars.mds.yandex.net/i?id=3976efaf5861705854b412324ef3dfc6a54b2768-5507593-images-thumbs&n=13" 
                   alt="SKA Logo" 
-                  className="relative w-32 h-32 object-contain animate-glow-pulse drop-shadow-2xl rounded-3xl"
+                  className="relative w-32 h-32 drop-shadow-2xl"
                 />
               </div>
-              <h2 className="text-7xl font-bold mb-4 glow bg-gradient-to-r from-primary via-white to-accent bg-clip-text text-transparent">SKA 1946</h2>
-              <p className="text-2xl text-foreground/90 mb-8 font-medium">VFHL | PUCK League Season 2025</p>
-              <div className="flex gap-8 text-center">
-                <div className="bg-background/60 backdrop-blur-md px-8 py-4 rounded-xl border-2 border-primary/40 shadow-lg shadow-primary/20 hover:scale-105 transition-transform">
-                  <div className="text-4xl font-bold text-primary mb-1">13</div>
-                  <div className="text-sm text-muted-foreground font-medium">Position</div>
-                </div>
-                <div className="bg-background/60 backdrop-blur-md px-8 py-4 rounded-xl border-2 border-accent/40 shadow-lg shadow-accent/20 hover:scale-105 transition-transform">
-                  <div className="text-4xl font-bold text-accent mb-1">5</div>
-                  <div className="text-sm text-muted-foreground font-medium">Players</div>
-                </div>
+              
+              <h1 className="text-7xl font-bold mb-4 text-gradient" style={{ textShadow: '0 0 20px hsl(var(--primary) / 0.5)' }}>
+                SKA 1946
+              </h1>
+              <p className="text-2xl font-medium text-foreground/90 mb-8">
+                VFHL | PUCK League Season 2025
+              </p>
+              
+              <div className="flex gap-8 mt-4">
+                <Card className="px-8 py-6 bg-background/60 backdrop-blur-sm border-2 border-primary/40 shadow-lg shadow-primary/20 hover:scale-105 transition-transform">
+                  <div className="text-4xl font-bold text-primary mb-2">13</div>
+                  <div className="text-sm text-muted-foreground">Position</div>
+                </Card>
+                <Card className="px-8 py-6 bg-background/60 backdrop-blur-sm border-2 border-accent/40 shadow-lg shadow-accent/20 hover:scale-105 transition-transform">
+                  <div className="text-4xl font-bold text-accent mb-2">5</div>
+                  <div className="text-sm text-muted-foreground">Players</div>
+                </Card>
               </div>
             </div>
           </div>
@@ -184,11 +231,31 @@ export default function Index() {
                       </Badge>
                     </div>
                     <h3 className="text-lg font-bold mb-3">{player.name}</h3>
-                    <div className="text-sm">
+                    <div className="text-sm mb-4">
                       <div className="flex justify-between">
                         <span className="text-muted-foreground">Игр:</span>
                         <span className="font-medium">{player.games}</span>
                       </div>
+                    </div>
+                    <div className="flex gap-2">
+                      <Button 
+                        variant="outline" 
+                        size="sm" 
+                        className="flex-1"
+                        onClick={() => openDialog(player, 'stats')}
+                      >
+                        <Icon name="BarChart3" size={14} />
+                        <span className="ml-1">Stats</span>
+                      </Button>
+                      <Button 
+                        variant="outline" 
+                        size="sm" 
+                        className="flex-1"
+                        onClick={() => openDialog(player, 'profile')}
+                      >
+                        <Icon name="User" size={14} />
+                        <span className="ml-1">Profile</span>
+                      </Button>
                     </div>
                   </Card>
                 ))}
@@ -224,44 +291,34 @@ export default function Index() {
                       </tr>
                     </thead>
                     <tbody>
-                      {[
-                        { pos: 1, team: 'Красная Армия', i: 10, v: 8, vo: 0, po: 1, p: 1, sz: 23, sp: 9, o: 17 },
-                        { pos: 2, team: 'Тюменский Легион', i: 11, v: 6, vo: 1, po: 0, p: 3, sz: 24, sp: 11, o: 16 },
-                        { pos: 3, team: 'Сибирские снайперы', i: 12, v: 7, vo: 0, po: 0, p: 4, sz: 24, sp: 13, o: 15 },
-                        { pos: 4, team: 'Динамо-Шинник', i: 8, v: 5, vo: 1, po: 0, p: 1, sz: 21, sp: 10, o: 14 },
-                        { pos: 5, team: 'Толпар', i: 10, v: 5, vo: 0, po: 0, p: 3, sz: 26, sp: 14, o: 13 },
-                        { pos: 6, team: 'Стальные Лисы', i: 7, v: 6, vo: 0, po: 0, p: 1, sz: 14, sp: 6, o: 12 },
-                        { pos: 7, team: 'МХК Спартак', i: 5, v: 4, vo: 0, po: 0, p: 1, sz: 12, sp: 3, o: 8 },
-                        { pos: 8, team: 'Мамонты Югры', i: 5, v: 3, vo: 1, po: 0, p: 1, sz: 10, sp: 6, o: 8 },
-                        { pos: 9, team: 'Академия Михайлова', i: 7, v: 3, vo: 1, po: 0, p: 3, sz: 9, sp: 8, o: 8 },
-                        { pos: 10, team: 'Локо', i: 8, v: 3, vo: 0, po: 1, p: 4, sz: 19, sp: 24, o: 7 },
-                        { pos: 11, team: 'Омские Ястребы', i: 10, v: 3, vo: 0, po: 0, p: 7, sz: 13, sp: 18, o: 6 },
-                        { pos: 12, team: 'МХК Динамо СПб', i: 8, v: 1, vo: 0, po: 1, p: 4, sz: 10, sp: 17, o: 6 },
-                        { pos: 13, team: 'СКА 19-46', i: 7, v: 3, vo: 0, po: 0, p: 4, sz: 6, sp: 12, o: 6 },
-                        { pos: 14, team: 'Кузнецкие Медведи', i: 9, v: 2, vo: 0, po: 0, p: 7, sz: 7, sp: 20, o: 4 },
-                        { pos: 15, team: 'Чайка', i: 4, v: 1, vo: 0, po: 1, p: 2, sz: 5, sp: 9, o: 3 },
-                        { pos: 16, team: 'Белые Медведи', i: 8, v: 1, vo: 0, po: 0, p: 6, sz: 4, sp: 20, o: 3 },
-                        { pos: 17, team: 'Крылья Советов', i: 2, v: 1, vo: 0, po: 0, p: 1, sz: 2, sp: 2, o: 2 },
-                        { pos: 18, team: 'Алмаз', i: 9, v: 0, vo: 0, po: 0, p: 9, sz: 3, sp: 29, o: 0 },
-                      ].map((team, idx) => (
-                        <tr key={idx} className={`border-b transition-colors ${idx >= 14 ? 'border-red-500 bg-red-500/10 hover:bg-red-500/20' : 'border-border/30 hover:bg-primary/5'}`}>
-                          <td className="py-3 px-4 font-semibold text-center">{team.pos}</td>
-                          <td className="py-3 px-2 font-medium">{team.team}</td>
-                          <td className="text-center py-3 px-2">{team.i}</td>
-                          <td className="text-center py-3 px-2">{team.v}</td>
-                          <td className="text-center py-3 px-2">{team.vo}</td>
-                          <td className="text-center py-3 px-2">{team.po}</td>
-                          <td className="text-center py-3 px-2">{team.p}</td>
-                          <td className="text-center py-3 px-2">{team.sz}</td>
-                          <td className="text-center py-3 px-2">{team.sp}</td>
-                          <td className="text-center py-3 px-2 font-bold bg-primary/10">{team.o}</td>
+                      {standingsData.map((row) => (
+                        <tr 
+                          key={row.pos}
+                          className={`border-b transition-colors ${
+                            row.relegation 
+                              ? 'border-red-500/30 bg-red-500/10 hover:bg-red-500/20' 
+                              : 'border-border/30 hover:bg-primary/5'
+                          } ${row.highlight ? 'bg-primary/10 font-bold' : ''}`}
+                        >
+                          <td className="text-center py-3 px-4">{row.pos}</td>
+                          <td className="text-left py-3 px-2">{row.team}</td>
+                          <td className="text-center py-3 px-2">{row.i}</td>
+                          <td className="text-center py-3 px-2">{row.v}</td>
+                          <td className="text-center py-3 px-2">{row.vo}</td>
+                          <td className="text-center py-3 px-2">{row.po}</td>
+                          <td className="text-center py-3 px-2">{row.p}</td>
+                          <td className="text-center py-3 px-2">{row.sz}</td>
+                          <td className="text-center py-3 px-2">{row.sp}</td>
+                          <td className="text-center py-3 px-2 font-bold bg-primary/10">{row.o}</td>
                         </tr>
                       ))}
                     </tbody>
                   </table>
                 </div>
-                <div className="mt-4 text-xs text-muted-foreground">
-                  <p>И - Игры | В - Победы | ВО - Победы ОТ | ПО - Поражения ОТ | П - Поражения | ШЗ - Шайбы забитые | ШП - Шайбы пропущенные | О - Очки</p>
+                <div className="mt-6 pt-4 border-t border-border/50 text-xs text-muted-foreground">
+                  <p className="mb-2"><strong>Легенда:</strong></p>
+                  <p>И - Игры, В - Победы, ВО - Победы ОТ, ПО - Поражения ОТ, П - Поражения, ШЗ - Шайбы забитые, ШП - Шайбы пропущенные, О - Очки</p>
+                  <p className="mt-2 text-red-400">Команды в зоне вылета выделены красным</p>
                 </div>
               </Card>
             </div>
@@ -271,167 +328,41 @@ export default function Index() {
             <div className="animate-slide-up">
               <h2 className="text-4xl font-bold mb-8 flex items-center gap-3">
                 <Icon name="Calendar" size={32} className="text-primary" />
-                <span className="text-gradient">Календарь матчей</span>
+                <span className="text-gradient">Расписание</span>
               </h2>
-              <Card className="p-6 bg-card/80 backdrop-blur-sm border-border/50">
-                <div className="grid grid-cols-7 gap-2">
-                  {['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'].map((day) => (
-                    <div key={day} className="text-center font-bold py-2 text-muted-foreground">
+              <Card className="p-6">
+                <h3 className="text-2xl font-bold mb-6">Октябрь 2025</h3>
+                <div className="grid grid-cols-7 gap-2 mb-2">
+                  {calendar.daysOfWeek.map(day => (
+                    <div key={day} className="text-center font-semibold text-sm text-muted-foreground py-2">
                       {day}
                     </div>
                   ))}
-                  
-                  <div className="p-2 text-center">22</div>
-                  <div className="p-2 text-center">23</div>
-                  <div className="p-2 text-center">24</div>
-                  <div className="p-2 bg-primary/10 rounded-lg border border-primary/30">
-                    <div className="text-center font-semibold mb-2">25</div>
-                    <div className="flex flex-col gap-1 text-xs">
-                      <div className="flex items-center justify-between gap-1">
-                        <span className="text-[10px]">🏒 СКА</span>
-                        <span className="font-bold">17:30</span>
-                        <span className="text-[10px]">Белые медведи</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="p-2 bg-primary/10 rounded-lg border border-primary/30">
-                    <div className="text-center font-semibold mb-2">26</div>
-                    <div className="flex flex-col gap-1 text-xs">
-                      <div className="flex items-center justify-between gap-1">
-                        <span className="text-[10px]">🏒 СКА</span>
-                        <span className="font-bold">17:30</span>
-                        <span className="text-[10px]">Красная армия</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="p-2 bg-primary/10 rounded-lg border border-primary/30">
-                    <div className="text-center font-semibold mb-2">27</div>
-                    <div className="flex flex-col gap-1 text-xs">
-                      <div className="flex items-center justify-between gap-1">
-                        <span className="text-[10px]">🏒 СКА</span>
-                        <span className="font-bold">17:30</span>
-                        <span className="text-[10px]">Сибирские снайперы</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="p-2 text-center">28</div>
-
-                  <div className="p-2 text-center">29</div>
-                  <div className="p-2 bg-primary/10 rounded-lg border border-primary/30">
-                    <div className="text-center font-semibold mb-2">30</div>
-                    <div className="flex flex-col gap-1 text-xs">
-                      <div className="flex items-center justify-between gap-1">
-                        <span className="text-[10px]">Омские ястребы</span>
-                        <span className="font-bold">16:30</span>
-                        <span className="text-[10px]">🏒 СКА</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="p-2 bg-primary/10 rounded-lg border border-primary/30">
-                    <div className="text-center font-semibold mb-2">31</div>
-                    <div className="flex flex-col gap-1 text-xs">
-                      <div className="flex items-center justify-between gap-1">
-                        <span className="text-[10px]">Толпар</span>
-                        <span className="font-bold">16:30</span>
-                        <span className="text-[10px]">🏒 СКА</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="p-2 bg-primary/10 rounded-lg border border-primary/30">
-                    <div className="text-center font-semibold mb-2">1</div>
-                    <div className="flex flex-col gap-1 text-xs">
-                      <div className="flex items-center justify-between gap-1">
-                        <span className="text-[10px]">Академия Михайлова</span>
-                        <span className="font-bold">16:30</span>
-                        <span className="text-[10px]">🏒 СКА</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="p-2 text-center">2</div>
-                  <div className="p-2 text-center">3</div>
-                  <div className="p-2 text-center">4</div>
-
-                  <div className="p-2 text-center">5</div>
-                  <div className="p-2 text-center">6</div>
-                  <div className="p-2 text-center">7</div>
-                  <div className="p-2 bg-primary/10 rounded-lg border border-primary/30">
-                    <div className="text-center font-semibold mb-2">8</div>
-                    <div className="flex flex-col gap-1 text-xs">
-                      <div className="flex items-center justify-between gap-1">
-                        <span className="text-[10px]">🏒 СКА</span>
-                        <span className="font-bold">18:30</span>
-                        <span className="text-[10px]">Стальные лисы</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="p-2 text-center">9</div>
-                  <div className="p-2 text-center">10</div>
-                  <div className="p-2 text-center">11</div>
-
-                  <div className="p-2 text-center">12</div>
-                  <div className="p-2 text-center">13</div>
-                  <div className="p-2 text-center">14</div>
-                  <div className="p-2 bg-primary/10 rounded-lg border border-primary/30">
-                    <div className="text-center font-semibold mb-2">15</div>
-                    <div className="flex flex-col gap-1 text-xs">
-                      <div className="flex items-center justify-between gap-1">
-                        <span className="text-[10px]">🏒 СКА</span>
-                        <span className="font-bold">16:30</span>
-                        <span className="text-[10px]">Локо</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="p-2 text-center">16</div>
-                  <div className="p-2 text-center">17</div>
-                  <div className="p-2 bg-primary/10 rounded-lg border border-primary/30">
-                    <div className="text-center font-semibold mb-2">18</div>
-                    <div className="flex flex-col gap-1 text-xs">
-                      <div className="flex items-center justify-between gap-1">
-                        <span className="text-[10px]">Шинник</span>
-                        <span className="font-bold">18:30</span>
-                        <span className="text-[10px]">🏒 СКА</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="p-2 text-center">19</div>
-                  <div className="p-2 text-center">20</div>
-                  <div className="p-2 text-center">21</div>
-                  <div className="p-2 bg-primary/10 rounded-lg border border-primary/30">
-                    <div className="text-center font-semibold mb-2">22</div>
-                    <div className="flex flex-col gap-1 text-xs">
-                      <div className="flex items-center justify-between gap-1">
-                        <span className="text-[10px]">🏒 СКА</span>
-                        <span className="font-bold">17:30</span>
-                        <span className="text-[10px]">Кузнецкие медведи</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="p-2 text-center">23</div>
-                  <div className="p-2 bg-primary/10 rounded-lg border border-primary/30">
-                    <div className="text-center font-semibold mb-2">24</div>
-                    <div className="flex flex-col gap-1 text-xs">
-                      <div className="flex items-center justify-between gap-1">
-                        <span className="text-[10px]">Алмаз</span>
-                        <span className="font-bold">16:30</span>
-                        <span className="text-[10px]">🏒 СКА</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="p-2 text-center">25</div>
-
-                  <div className="p-2 text-center">26</div>
-                  <div className="p-2 text-center">27</div>
-                  <div className="p-2 text-center">28</div>
-                  <div className="p-2 text-center">29</div>
-                  <div className="p-2 text-center">30</div>
-                  <div className="p-2 text-center">31</div>
-                  <div className="p-2 text-center">1</div>
-                  <div className="p-2 text-center">2</div>
                 </div>
-                <div className="mt-4 flex items-center gap-2 text-sm text-muted-foreground">
-                  <div className="w-4 h-4 bg-primary/10 border border-primary/30 rounded"></div>
-                  <span>Матчи СКА 🏒</span>
+                <div className="grid grid-cols-7 gap-2">
+                  {calendar.days.map(({ date, match }) => (
+                    <div 
+                      key={date} 
+                      className={`min-h-[80px] p-2 rounded-lg border ${
+                        match 
+                          ? 'bg-primary/10 border-primary/30' 
+                          : 'border-border/20'
+                      }`}
+                    >
+                      <div className="text-sm font-semibold mb-1">{date}</div>
+                      {match && (
+                        <div className="text-[10px] leading-tight">
+                          <div className="mb-0.5">{match.team1} vs {match.team2}</div>
+                          <div className="font-bold">{match.time}</div>
+                          {match.isHome && <div>🏒</div>}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-4 flex items-center gap-2 text-xs text-muted-foreground">
+                  <div className="w-4 h-4 bg-primary/20 border border-primary/50 rounded" />
+                  <span>Матчи СКА</span>
                 </div>
               </Card>
             </div>
@@ -441,13 +372,11 @@ export default function Index() {
             <div className="animate-slide-up">
               <h2 className="text-4xl font-bold mb-8 flex items-center gap-3">
                 <Icon name="Newspaper" size={32} className="text-primary" />
-                <span className="text-gradient">News</span>
+                <span className="text-gradient">Новости</span>
               </h2>
-              <Card className="p-8 bg-card/80 backdrop-blur-sm border-border/50">
-                <div className="text-center py-12">
-                  <Icon name="FileText" size={64} className="text-muted-foreground mx-auto mb-4" />
-                  <p className="text-xl text-muted-foreground">Latest News & Updates Coming Soon</p>
-                </div>
+              <Card className="p-12 text-center">
+                <Icon name="FileText" size={64} className="mx-auto mb-4 text-muted-foreground" />
+                <p className="text-xl text-muted-foreground">Latest News & Updates Coming Soon</p>
               </Card>
             </div>
           )}
@@ -456,132 +385,111 @@ export default function Index() {
             <div className="animate-slide-up">
               <h2 className="text-4xl font-bold mb-8 flex items-center gap-3">
                 <Icon name="MessageCircle" size={32} className="text-primary" />
-                <span className="text-gradient">Contacts</span>
+                <span className="text-gradient">Контакты</span>
               </h2>
-              <Card className="p-8 bg-card/80 backdrop-blur-sm border-border/50">
-                <div className="grid md:grid-cols-1 gap-6">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-accent/20 rounded-lg flex items-center justify-center">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" className="text-accent">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
-                      </svg>
-                    </div>
-                    <div>
-                      <h3 className="font-bold mb-1">Telegram</h3>
-                      <a 
-                        href="https://t.me/SKA1946VFHL" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-muted-foreground hover:text-primary transition-colors underline"
-                      >
-                        @SKA1946VFHL
-                      </a>
-                    </div>
+              <Card className="p-8">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-lg bg-accent/20 flex items-center justify-center">
+                    <svg className="w-6 h-6 text-accent" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18.717-.962 3.928-1.36 5.213-.168.546-.5.728-.818.746-.695.064-1.223-.459-1.895-.899-1.054-.688-1.649-1.115-2.671-1.786-.118-.077-.887-.564-.765-1.077.032-.135.582-.654 1.26-1.288.678-.634 1.36-1.268 1.36-1.268.101-.089.202-.267.014-.381-.188-.114-1.048-.682-1.886-1.229-.837-.547-1.675-1.094-1.675-1.094s-.218-.136-.609-.014c-.39.122-1.528.652-1.528.652s-.565.363-.034.752c0 0 2.505 2.324 3.765 3.484.084.078 2.022 1.857 2.492 2.286.087.08.174.238.174.375 0 .138-.044.275-.131.35-.521.45-3.956 3.457-3.956 3.457"/>
+                    </svg>
+                  </div>
+                  <div className="flex-1">
+                    <div className="text-sm text-muted-foreground mb-1">Telegram</div>
+                    <a 
+                      href="https://t.me/SKA1946VFHL" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-lg font-bold hover:text-primary transition-colors"
+                    >
+                      @SKA1946VFHL
+                    </a>
                   </div>
                 </div>
               </Card>
             </div>
           )}
         </div>
-      </main>
+      </div>
 
-      <footer className="border-t border-border/50 mt-12 py-8 bg-secondary/30 backdrop-blur-sm">
-        <div className="container mx-auto px-4 text-center text-muted-foreground text-sm">
-          <p>© 2025 SKA 1946 • VFHL | PUCK League</p>
+      <footer className="border-t border-border/50 bg-secondary/30 backdrop-blur-sm">
+        <div className="container mx-auto px-4 py-8 text-center text-sm text-muted-foreground">
+          © 2025 SKA 1946 • VFHL | PUCK League
         </div>
       </footer>
 
-      <Dialog open={!!selectedPlayer} onOpenChange={closeDialog}>
-        <DialogContent className="max-w-md bg-card border-border">
-          {selectedPlayer && dialogType === 'stats' && (
-            <>
-              <DialogHeader>
-                <DialogTitle className="text-2xl font-bold flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-xl font-bold">
-                    {selectedPlayer.number}
-                  </div>
-                  <span>{selectedPlayer.name}</span>
-                </DialogTitle>
-                <DialogDescription>
-                  Статистика игрока за сезон 2025
-                </DialogDescription>
-              </DialogHeader>
-              <div className="space-y-4 mt-4">
-                <div className="grid grid-cols-1 gap-4">
-                  <div className="bg-primary/10 rounded-lg p-4 border border-primary/20">
-                    <div className="text-3xl font-bold text-primary">{selectedPlayer.games}</div>
-                    <div className="text-sm text-muted-foreground">Игр сыграно</div>
-                  </div>
-                </div>
+      <Dialog open={!!selectedPlayer} onOpenChange={() => setSelectedPlayer(null)}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>{selectedPlayer?.name}</DialogTitle>
+            <DialogDescription>
+              {dialogType === 'stats' ? 'Player Statistics' : 'Player Profile'}
+            </DialogDescription>
+          </DialogHeader>
+          
+          {dialogType === 'stats' && selectedPlayer && (
+            <div className="space-y-4">
+              <Card className="p-4 bg-primary/10">
+                <div className="text-2xl font-bold text-center">{selectedPlayer.games}</div>
+                <div className="text-sm text-center text-muted-foreground">Games Played</div>
+              </Card>
+              
+              <div className="grid grid-cols-2 gap-4">
                 {selectedPlayer.position === 'GK' ? (
-                  <div className="space-y-3">
-                    <div className="flex justify-between items-center p-3 bg-secondary/50 rounded-lg">
-                      <span className="text-muted-foreground">Побед</span>
-                      <span className="text-xl font-bold">{selectedPlayer.wins}</span>
-                    </div>
-                    <div className="flex justify-between items-center p-3 bg-secondary/50 rounded-lg">
-                      <span className="text-muted-foreground">Сейвов</span>
-                      <span className="text-xl font-bold">{selectedPlayer.saves}</span>
-                    </div>
-                  </div>
+                  <>
+                    <Card className="p-4 bg-secondary/50 rounded-lg">
+                      <div className="text-xl font-bold text-center">{selectedPlayer.wins}</div>
+                      <div className="text-sm text-center text-muted-foreground">Wins</div>
+                    </Card>
+                    <Card className="p-4 bg-secondary/50 rounded-lg">
+                      <div className="text-xl font-bold text-center">{selectedPlayer.saves}</div>
+                      <div className="text-sm text-center text-muted-foreground">Saves</div>
+                    </Card>
+                  </>
                 ) : (
-                  <div className="space-y-3">
-                    <div className="flex justify-between items-center p-3 bg-secondary/50 rounded-lg">
-                      <span className="text-muted-foreground">Голов</span>
-                      <span className="text-xl font-bold">{selectedPlayer.goals}</span>
-                    </div>
-                    <div className="flex justify-between items-center p-3 bg-secondary/50 rounded-lg">
-                      <span className="text-muted-foreground">Передач</span>
-                      <span className="text-xl font-bold">{selectedPlayer.assists}</span>
-                    </div>
-                  </div>
+                  <>
+                    <Card className="p-4 bg-secondary/50 rounded-lg">
+                      <div className="text-xl font-bold text-center">{selectedPlayer.goals}</div>
+                      <div className="text-sm text-center text-muted-foreground">Goals</div>
+                    </Card>
+                    <Card className="p-4 bg-secondary/50 rounded-lg">
+                      <div className="text-xl font-bold text-center">{selectedPlayer.assists}</div>
+                      <div className="text-sm text-center text-muted-foreground">Assists</div>
+                    </Card>
+                  </>
                 )}
               </div>
-            </>
+            </div>
           )}
-          {selectedPlayer && dialogType === 'profile' && (
-            <>
-              <DialogHeader>
-                <DialogTitle className="text-2xl font-bold flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-xl font-bold">
-                    {selectedPlayer.number}
-                  </div>
-                  <span>{selectedPlayer.name}</span>
-                </DialogTitle>
-                <DialogDescription>
-                  Профиль игрока команды SKA 1946
-                </DialogDescription>
-              </DialogHeader>
-              <div className="space-y-4 mt-4">
-                <div className="flex items-center justify-between p-4 bg-secondary/50 rounded-lg">
-                  <span className="text-muted-foreground">Номер</span>
-                  <Badge variant="outline" className="text-lg px-4 py-1 border-primary/30 bg-primary/10">
-                    #{selectedPlayer.number}
-                  </Badge>
-                </div>
-                <div className="flex items-center justify-between p-4 bg-secondary/50 rounded-lg">
-                  <span className="text-muted-foreground">Позиция</span>
-                  <Badge variant="outline" className="text-lg px-4 py-1 border-accent/30 bg-accent/10">
-                    {selectedPlayer.position}
-                  </Badge>
-                </div>
-                <div className="p-4 bg-secondary/50 rounded-lg">
-                  <div className="text-sm text-muted-foreground mb-2">О игроке</div>
-                  <p className="text-base">{selectedPlayer.bio}</p>
-                </div>
-                <div className="p-4 bg-secondary/50 rounded-lg">
-                  <div className="text-sm text-muted-foreground mb-2">Telegram</div>
-                  <a 
-                    href="https://t.me/SKA1946VFHL" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="text-primary hover:text-primary/80 transition-colors underline text-base font-medium"
-                  >
-                    https://t.me/SKA1946VFHL
-                  </a>
-                </div>
+          
+          {dialogType === 'profile' && selectedPlayer && (
+            <div className="space-y-4">
+              <div className="flex items-center gap-4">
+                <Badge variant="outline" className="text-2xl px-4 py-2">
+                  #{selectedPlayer.number}
+                </Badge>
+                <Badge variant="secondary">
+                  {selectedPlayer.position}
+                </Badge>
               </div>
-            </>
+              
+              <div>
+                <h4 className="font-semibold mb-2">Bio</h4>
+                <p className="text-sm text-muted-foreground">{selectedPlayer.bio}</p>
+              </div>
+              
+              <div>
+                <h4 className="font-semibold mb-2">Contact</h4>
+                <a 
+                  href="https://t.me/SKA1946VFHL" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-primary hover:underline"
+                >
+                  Telegram: @SKA1946VFHL
+                </a>
+              </div>
+            </div>
           )}
         </DialogContent>
       </Dialog>
